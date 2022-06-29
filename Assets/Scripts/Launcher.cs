@@ -5,13 +5,26 @@ using Photon.Pun;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        Debug.Log("Connecting to Master Server...");
+
+        PhotonNetwork.ConnectUsingSettings();
     }
 
-    // Update is called once per frame
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("Connected!");
+        PhotonNetwork.JoinLobby();
+    }
+
+    public override void OnJoinedLobby()
+    {
+        MenuManager.Instance.OpenMenu("Title");
+        Debug.Log("Joined Lobby!");
+    }
+
     void Update()
     {
         
