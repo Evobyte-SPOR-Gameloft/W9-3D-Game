@@ -71,3 +71,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+Assets/Photon.meta
+Assets/Photon/PhotonLibs.meta
+Assets/Photon/PhotonLibs/Metro.meta
+Assets/Photon/PhotonLibs/netstandard2.0.meta
