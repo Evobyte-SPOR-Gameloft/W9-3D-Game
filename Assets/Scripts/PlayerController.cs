@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
 
     bool grounded;
 
+    [SerializeField] Item[] items;
+
+    int itemIndex;
+    int previousItemIndex = -1;
+
     float verticalLookRotation;
     Vector3 smoothMoveVelocity;
     Vector3 moveAmount;
@@ -26,7 +31,12 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        if (!PV.IsMine)
+        if (PV.IsMine)
+        {
+            Debug.Log("Equiped Item 0");
+            EquipItem(0);
+        }
+        else
         {
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
@@ -40,6 +50,15 @@ public class PlayerController : MonoBehaviour
         Look();
         Move();
         Jump();
+
+        for(int i = 0; i < items.Length; i++)
+        {
+            if(Input.GetKeyDown((i + 1).ToString()))
+            {
+                EquipItem(i);
+                break;
+            }
+        }
     }
 
     private void Look()
@@ -67,6 +86,24 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(transform.up * jumpForce);
         }
 
+    }
+
+    private void EquipItem(int _index)
+    {
+        if (_index == previousItemIndex)
+            return;
+
+        itemIndex = _index;
+
+        Debug.Log("Setting the gun object active!");
+        items[itemIndex].itemGameObject.SetActive(true);
+
+        if(previousItemIndex != -1)
+        {
+            items[previousItemIndex].itemGameObject.SetActive(false);
+        }
+
+        previousItemIndex = itemIndex;
     }
 
     public void SetGroundedState(bool _grounded)
