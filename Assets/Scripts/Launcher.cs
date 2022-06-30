@@ -5,6 +5,7 @@ using Photon.Pun;
 using TMPro;
 using Photon.Realtime;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -72,7 +73,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
         }
 
-        startGameButton.SetActive(PhotonNetwork.IsMasterClient);
+        startGameButton.GetComponent<Button>().interactable = PhotonNetwork.IsMasterClient;
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)

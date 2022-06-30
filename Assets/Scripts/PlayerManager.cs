@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void CreateController()
+    private void CreateController()
     {
         Debug.Log("Instantiated Player Controller");
 
