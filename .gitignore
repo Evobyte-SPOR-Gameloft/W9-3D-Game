@@ -75,3 +75,12 @@ Assets/Photon.meta
 Assets/Photon/PhotonLibs.meta
 Assets/Photon/PhotonLibs/Metro.meta
 Assets/Photon/PhotonLibs/netstandard2.0.meta
+*.json
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+*.json
+*.json
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+*.json
+*.json
+*.json
+*.json
