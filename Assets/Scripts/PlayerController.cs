@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     {
         if (PV.IsMine)
         {
-            Debug.Log("Equiped Item 0");
             EquipItem(0);
         }
         else
