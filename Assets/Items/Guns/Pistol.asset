@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   itemName: Pistol
-  damage: 25
+  minDamage: 3
+  maxDamage: 9
