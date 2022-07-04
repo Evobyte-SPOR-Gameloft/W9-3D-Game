@@ -35,19 +35,19 @@ public class SingleShotGun : Gun
             magCapacity -= 1;
             Debug.Log(magCapacity);
         }
-        else
+        else if(magCapacity == 0)
         {
+            Debug.Log("Out of ammo");
             StartCoroutine(ReloadGun());
         }
     }
 
     IEnumerator ReloadGun()
     {
-        
-            Debug.Log("Reloading gun");
-            yield return new WaitForSeconds(2.5f);
-            magCapacity = 15;
-            Debug.Log("Reloaded new magazine");
+        Debug.Log("Reloading gun");
+        yield return new WaitForSeconds(2.5f);
+        magCapacity = 15;
+        Debug.Log("Reloaded new magazine");
     }
 
     [PunRPC]
