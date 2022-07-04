@@ -9,6 +9,8 @@ public class SingleShotGun : Gun
     [SerializeField] Camera cam;
     PhotonView PV;
 
+    private int magCapacity = 15;
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -21,13 +23,31 @@ public class SingleShotGun : Gun
 
     private void Shoot()
     {
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-        ray.origin = cam.transform.position;
-        if(Physics.Raycast(ray, out RaycastHit hit))
+        if(magCapacity > 0)
         {
-            hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
-            PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
+            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            ray.origin = cam.transform.position;
+            if(Physics.Raycast(ray, out RaycastHit hit))
+            {
+                hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
+                PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
+            }
+            magCapacity -= 1;
+            Debug.Log(magCapacity);
         }
+        else
+        {
+            StartCoroutine(ReloadGun());
+        }
+    }
+
+    IEnumerator ReloadGun()
+    {
+        
+            Debug.Log("Reloading gun");
+            yield return new WaitForSeconds(2.5f);
+            magCapacity = 15;
+            Debug.Log("Reloaded new magazine");
     }
 
     [PunRPC]
