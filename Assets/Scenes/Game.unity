@@ -256,7 +256,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 15019326}
@@ -334,7 +334,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 59279509}
@@ -568,7 +568,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 83710296}
@@ -880,7 +880,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 111264357}
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 139298617}
@@ -1672,7 +1672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 958118956729563138, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2643,7 +2643,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 154374119}
@@ -3033,7 +3033,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 207186575}
@@ -3306,7 +3306,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 256736828}
@@ -3774,7 +3774,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 288283190}
@@ -4203,7 +4203,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 334073290}
@@ -4242,7 +4242,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 334780702}
@@ -4437,7 +4437,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 345050165}
@@ -4710,7 +4710,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 375005748}
@@ -4866,7 +4866,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 392740336}
@@ -5426,7 +5426,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 469256798}
@@ -5465,7 +5465,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 484922944}
@@ -5747,7 +5747,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 535673365}
@@ -5786,7 +5786,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 538013866}
@@ -5864,7 +5864,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 547575229}
@@ -5903,7 +5903,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 550096736}
@@ -5942,7 +5942,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 555578299}
@@ -6254,7 +6254,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 592756517}
@@ -6371,7 +6371,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 602855750}
@@ -6488,7 +6488,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 617956644}
@@ -7011,7 +7011,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 682057736}
@@ -7268,7 +7268,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 724096631}
@@ -7508,7 +7508,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 778095341}
@@ -7586,7 +7586,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 790741639}
@@ -7703,7 +7703,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 804504276}
@@ -7781,7 +7781,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 814117421}
@@ -8300,7 +8300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 958118956729563138, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9349,7 +9349,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 875208204}
@@ -9704,7 +9704,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 891938940}
@@ -9782,7 +9782,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 902033874}
@@ -9899,7 +9899,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 917870913}
@@ -10117,7 +10117,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 935171024}
@@ -10195,7 +10195,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 954859534}
@@ -10273,7 +10273,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 969168406}
@@ -10624,7 +10624,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1001991875}
@@ -10663,7 +10663,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1005979634}
@@ -10780,7 +10780,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1008529682}
@@ -10936,7 +10936,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1031264745}
@@ -10975,7 +10975,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1032985548}
@@ -11131,7 +11131,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1056228493}
@@ -11287,7 +11287,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1073707265}
@@ -11767,7 +11767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 958118956729563138, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12777,7 +12777,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1082169962}
@@ -12972,7 +12972,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1100626588}
@@ -13401,7 +13401,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1182374531}
@@ -13802,7 +13802,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1210746686}
@@ -13919,7 +13919,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1229713189}
@@ -13997,7 +13997,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1234185375}
@@ -14153,7 +14153,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1267916767}
@@ -14192,7 +14192,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1269550513}
@@ -14289,7 +14289,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1277641323}
@@ -14328,7 +14328,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1280822989}
@@ -14484,7 +14484,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1310581734}
@@ -14819,7 +14819,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1347352683}
@@ -15599,7 +15599,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1400230774}
@@ -15638,7 +15638,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1404179914}
@@ -15817,7 +15817,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1420997012}
@@ -16542,7 +16542,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1491161218}
@@ -16581,7 +16581,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1502677247}
@@ -16737,7 +16737,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1521687524}
@@ -16776,7 +16776,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1526052932}
@@ -16893,7 +16893,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1528722178}
@@ -16971,7 +16971,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1537140625}
@@ -17244,7 +17244,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1553493259}
@@ -17327,7 +17327,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1572073228}
@@ -17520,6 +17520,443 @@ MonoBehaviour:
   sceneViewId: 252
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1001 &1599840366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -9041840650800774774, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -9008574784934589268, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8847891190916346225, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8504394331244591211, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8485213859696480972, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8341431908511062764, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8326945716111938540, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8157331303546256015, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8069508756400043813, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -8045720244607308196, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -7976885594297419955, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -7774206598564828348, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -7666260266684493791, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -7579355345134407265, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -7184585526151671203, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -7044905730243413741, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -6942387524232640471, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -6608750417724498806, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -5415024732596758294, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -5398110932860205291, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -5335073053472954707, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -5270041080083351214, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -5161643422713654331, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -4781171874775316866, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -4162338857966179674, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -4109960923565647544, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -3622494494995841529, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -3329914854487988479, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -2365095862185471026, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -2313660343980039095, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -2271843810309769280, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -2160368413889876320, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -2155788792199380909, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -2135668970508093743, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -1591921150316532365, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -1579673455977978259, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -1460665966288300990, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -1335993463359043696, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -1297246858797743438, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -1224501329897998384, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -1118549562520749077, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -689527237395963868, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -636494983479443511, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: -399400128291683400, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 127358158036366666, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 130779139606647745, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 361045333551091351, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 365738472095022250, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 695173022128587684, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 919132149155446097, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Name
+      value: DestroyableCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 958118956729563138, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 1104828440474692489, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 1340763527310418025, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 1481973314255961165, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 1825681526827072087, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 1875196294214460197, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 2061196379422094726, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 2879233150643282357, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 2987382911539044492, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 3883223560651377610, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 3893647660909276643, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 3901394471736497940, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 4528641441583369997, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 5028173951934167118, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 5128973659983680401, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 5564509303362322534, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 5569169970215912350, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 5912696530521612360, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 6054252687016790723, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 6876028837926850395, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 6901915115093157027, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 6934181235293367394, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 6953206911589847973, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7242685614943501281, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7256749667199353055, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7346056810063715650, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7483483505560368494, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7573411770702009904, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7603034631196418628, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7672210754621231900, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 7966761649475998902, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 8111497263554608901, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 8359795262531049088, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 8517582482098604627, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 8587630677850689867, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 8601050328541121182, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 8626969183307851500, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    - target: {fileID: 8842661855974072193, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f75e1b299241e0489d81524c3d64c21, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+--- !u!1 &1599840367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+  m_PrefabInstance: {fileID: 1599840366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1599840368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5926029762019210739, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
+  m_PrefabInstance: {fileID: 1599840366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1599840369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599840367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5234d988ed9f3a546b776157a7befd4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 1599840368}
+  root_dest_piece: {fileID: 0}
 --- !u!114 &1605865985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17731,7 +18168,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1647287371}
@@ -17809,7 +18246,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1658009111}
@@ -18082,7 +18519,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1688923194}
@@ -18160,7 +18597,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1693782749}
@@ -18679,7 +19116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 958118956729563138, guid: 8e1aac7155f2f354fbf00d70d73bcf6f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -19962,7 +20399,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1757005905}
@@ -20001,7 +20438,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1762043063}
@@ -21403,7 +21840,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1814556769}
@@ -21442,7 +21879,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1814556771}
@@ -21481,7 +21918,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1814556773}
@@ -21559,7 +21996,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1815147689}
@@ -21764,7 +22201,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1838928549}
@@ -22430,7 +22867,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1932072034}
@@ -22586,7 +23023,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1951763011}
@@ -22781,7 +23218,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1971445911}
@@ -22976,7 +23413,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1997129676}
@@ -23341,7 +23778,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2039360781}
@@ -23536,7 +23973,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2055879576}
@@ -23692,7 +24129,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2075285439}
@@ -23915,7 +24352,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2101063608}
@@ -24188,7 +24625,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2137123678}
