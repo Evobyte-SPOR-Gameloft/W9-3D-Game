@@ -20,6 +20,15 @@ public class SingleShotGun : Gun
     }
     
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("R KEY PRESSED");
+            StartCoroutine(ReloadGun());
+        }
+    }
+
     private void Shoot()
     {
         if(magCapacity > 0)
