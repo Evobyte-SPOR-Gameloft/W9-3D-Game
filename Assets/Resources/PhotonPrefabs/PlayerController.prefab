@@ -128,6 +128,7 @@ MonoBehaviour:
   magCapacity: 15
   bulletsToReload: 15
   reloadTime: 2.2
+  impactForce: 35
   cam: {fileID: 4298419746557651494}
 --- !u!114 &3645418776792328873
 MonoBehaviour:
@@ -203,6 +204,7 @@ MonoBehaviour:
   magCapacity: 30
   bulletsToReload: 30
   reloadTime: 3.4
+  impactForce: 75
   cam: {fileID: 4298419746557651494}
 --- !u!114 &5507137957658618445
 MonoBehaviour:

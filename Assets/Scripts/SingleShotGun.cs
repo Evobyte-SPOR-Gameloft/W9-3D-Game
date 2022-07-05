@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class SingleShotGun : Gun
 {
-
+    [SerializeField] private float impactForce = 10f;
     [SerializeField] Camera cam;
     PhotonView PV;
 
@@ -39,7 +39,7 @@ public class SingleShotGun : Gun
 
             if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
             {
-                hit.collider.GetComponent<DestroyedPieceController>().cause_damage(ray.direction * 10);
+                hit.collider.GetComponent<DestroyedPieceController>().cause_damage(ray.direction * impactForce);
                 PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
             }
             else if(Physics.Raycast(ray, out hit))
