@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class SingleShotGun : Gun
 {
-
+    [SerializeField] private float impactForce = 10f;
     [SerializeField] Camera cam;
     PhotonView PV;
 
@@ -36,14 +36,24 @@ public class SingleShotGun : Gun
         if(magCapacity > 0)
         {
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            RaycastHit hit;
             ray.origin = cam.transform.position;
-            if(Physics.Raycast(ray, out RaycastHit hit))
+
+            if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
+            {
+                hit.collider.GetComponent<PhotonView>().RequestOwnership();
+                hit.collider.GetComponent<DestroyedPieceController>().cause_damage(ray.direction * impactForce);
+                PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
+            }
+            else if(Physics.Raycast(ray, out hit))
             {
                 hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
                 PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
             }
+
             magCapacity -= 1;
             Debug.Log(magCapacity);
+
             if(magCapacity == 0)
             {
                 Debug.Log("Out of ammo");
