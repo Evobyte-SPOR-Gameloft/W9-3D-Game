@@ -43,7 +43,7 @@ public class DestroyedPieceController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Floor"))
         {
-            VFXController.Instance.spawn_dust_cloud(transform.position);
+            //Destroy(gameObject, 10f);
         }
     }
 
@@ -64,7 +64,6 @@ public class DestroyedPieceController : MonoBehaviour
         _rigidbody.isKinematic = false;
         is_dirty = true;
         _rigidbody.AddForce(force, ForceMode.Impulse);
-        VFXController.Instance.spawn_dust_cloud(transform.position);
     }
 
     public void drop()

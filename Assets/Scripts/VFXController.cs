@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VFXController : MonoBehaviour
 {
-    public GameObject dust_cloud;
+    public GameObject dispersion;
     public static VFXController Instance
     {
         get
@@ -20,8 +20,8 @@ public class VFXController : MonoBehaviour
     private static VFXController _instance;
     
     
-    public void spawn_dust_cloud(Vector3 position)
+    public void spawn_dispersion(Vector3 position)
     {
-        Instantiate(dust_cloud, position, Quaternion.identity);
+        Instantiate(dispersion, position, Quaternion.identity);
     }
 }
