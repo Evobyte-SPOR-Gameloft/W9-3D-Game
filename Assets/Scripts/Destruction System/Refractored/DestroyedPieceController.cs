@@ -16,7 +16,7 @@ public class DestroyedPieceController : MonoBehaviour
     private Vector3 _starting_scale;
 
     private bool _configured = false;
-    private bool _connections_found = false;
+    //private bool _connections_found = false;
 
     // Start is called before the first frame update
     void Start()

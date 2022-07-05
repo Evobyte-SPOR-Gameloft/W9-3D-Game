@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,17 @@ public class DestructableObjectController : MonoBehaviour
 
     private List<DestroyedPieceController> destroyed_pieces = new List<DestroyedPieceController>();
 
+    private PhotonView _pv;
+    private PhotonTransformView _pvt;
+    
+
     private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
             var child = transform.GetChild(i);
             var _dpc = child.gameObject.AddComponent<DestroyedPieceController>();
+
             var _rigidbody = child.gameObject.AddComponent<Rigidbody>();
             _rigidbody.isKinematic = false;
             _rigidbody.useGravity = false;
@@ -80,4 +86,37 @@ public class DestructableObjectController : MonoBehaviour
             piece.make_static();
         }
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream)
+    {
+        if (stream.IsWriting)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                var child = transform.GetChild(i);
+                if (child != null)
+                {
+                    stream.SendNext(child.localPosition);
+                    stream.SendNext(child.localRotation);
+                    stream.SendNext(child.localScale);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                var child = transform.GetChild(i);
+                if (child != null)
+                {
+                    child.localPosition = (Vector3)stream.ReceiveNext();
+                    child.localRotation = (Quaternion)stream.ReceiveNext();
+                    child.localScale = (Vector3)stream.ReceiveNext();
+                }
+            }
+        }
+    }
+
+
+
 }
