@@ -9,8 +9,6 @@ public class SingleShotGun : Gun
     [SerializeField] Camera cam;
     PhotonView PV;
 
-    private int magCapacity = 15;
-
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -20,6 +18,7 @@ public class SingleShotGun : Gun
     {
         Shoot();
     }
+    
 
     private void Shoot()
     {
@@ -34,19 +33,20 @@ public class SingleShotGun : Gun
             }
             magCapacity -= 1;
             Debug.Log(magCapacity);
+            if(magCapacity == 0)
+            {
+                Debug.Log("Out of ammo");
+                StartCoroutine(ReloadGun());
+            }
         }
-        else if(magCapacity == 0)
-        {
-            Debug.Log("Out of ammo");
-            StartCoroutine(ReloadGun());
-        }
+        
     }
 
     IEnumerator ReloadGun()
     {
         Debug.Log("Reloading gun");
-        yield return new WaitForSeconds(2.5f);
-        magCapacity = 15;
+        yield return new WaitForSeconds(reloadTime);
+        magCapacity = bulletsToReload;
         Debug.Log("Reloaded new magazine");
     }
 
