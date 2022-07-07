@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpecialityGun : Gun
 {
-    [SerializeField] private float maxGrabbingDistance = 10f, pushForce = 10f, lerpSpeed = 10f;
+    [SerializeField] private float maxGrabbingDistance = 7f, pushForce = 40f, lerpSpeed = 10f;
 
     [SerializeField] Camera cam;
 
@@ -31,6 +31,9 @@ public class SpecialityGun : Gun
 
     private void Update()
     {
+        if (!PV.IsMine)
+            return;
+
         if (grabbedRB)
         {
             grabbedRB.MovePosition(Vector3.Lerp(grabbedRB.position, ObjectHolder.transform.position, Time.deltaTime * lerpSpeed));
@@ -48,16 +51,24 @@ public class SpecialityGun : Gun
         {
             RaycastHit hit;
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            ray.origin = cam.transform.position;
 
             if (Physics.Raycast(ray, out hit, maxGrabbingDistance))
             {
+                Debug.Log($"Hit: {hit}");
+
                 if (Physics.Raycast(ray, out hit, maxGrabbingDistance, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
                 {
+                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
+
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
+
                     hit.collider.GetComponent<DestroyedPieceController>().CauseDamageByGravityGun();
                 }
                 else if(hit.collider != null)
                 {
+                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
+
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
                 }
 
