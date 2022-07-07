@@ -48,9 +48,21 @@ public class SpecialityGun : Gun
         {
             RaycastHit hit;
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+
             if (Physics.Raycast(ray, out hit, maxGrabbingDistance))
             {
-                grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
+                if (Physics.Raycast(ray, out hit, maxGrabbingDistance, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
+                {
+                    grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
+                    hit.collider.GetComponent<DestroyedPieceController>().CauseDamageByGravityGun();
+                }
+                else
+                {
+                    grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
+                }
+
+                //grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
+
                 if (grabbedRB)
                 {
                     grabbedRB.isKinematic = true;

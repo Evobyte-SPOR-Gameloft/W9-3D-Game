@@ -4,41 +4,39 @@ using UnityEngine;
 
 public class DestroyedPieceController : MonoBehaviour
 {
-    [HideInInspector] public bool is_connected = true;
-    [HideInInspector] public bool visited = false;
-    public List<DestroyedPieceController> connected_to;
+    [HideInInspector] public bool IsConnected = true;
+    [HideInInspector] public bool WasVisited = false;
+    public List<DestroyedPieceController> listOfConnections;
 
-    public static bool is_dirty = false;
+    public static bool IsDirty = false;
 
-    private Rigidbody _rigidbody;
-    private Vector3 _starting_pos;
-    private Quaternion _starting_orientation;
-    private Vector3 _starting_scale;
+    private Rigidbody rb;
+    private Vector3 startingPosition;
+    private Quaternion startingOrientation;
+    private Vector3 startingScale;
 
-    private bool _configured = false;
-    //private bool _connections_found = false;
+    private bool IsConfigured = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        connected_to = new List<DestroyedPieceController>();
-        _starting_pos = transform.position;
-        _starting_orientation = transform.rotation;
-        _starting_scale = transform.localScale;
+        listOfConnections = new List<DestroyedPieceController>();
+        startingPosition = transform.position;
+        startingOrientation = transform.rotation;
+        startingScale = transform.localScale;
 
-        _rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
        
-        if (!_configured)
+        if (!IsConfigured)
         {
             var neighbour = collision.gameObject.GetComponent<DestroyedPieceController>();
             if (neighbour)
             {
-                if(!connected_to.Contains(neighbour))
-                    connected_to.Add(neighbour);
+                if(!listOfConnections.Contains(neighbour))
+                    listOfConnections.Add(neighbour);
             }
         }
         else if (collision.gameObject.CompareTag("Floor"))
@@ -47,28 +45,41 @@ public class DestroyedPieceController : MonoBehaviour
         }
     }
 
-    public void make_static()
+    public void MakeStatic()
     {
-        _configured = true;
-        _rigidbody.isKinematic = true;
-        _rigidbody.useGravity = true;
+        IsConfigured = true;
+        rb.isKinematic = true;
+        rb.useGravity = true;
 
-        transform.localScale = _starting_scale;
-        transform.position = _starting_pos;
-        transform.rotation = _starting_orientation;
+        transform.localScale = startingScale;
+        transform.position = startingPosition;
+        transform.rotation = startingOrientation;
     }
 
-    public void cause_damage(Vector3 force)
+    public void CauseDamage(Vector3 force)
     {
-        is_connected = false;
-        _rigidbody.isKinematic = false;
-        is_dirty = true;
-        _rigidbody.AddForce(force, ForceMode.Impulse);
+        IsConnected = false;
+        rb.isKinematic = false;
+        IsDirty = true;
+        rb.AddForce(force, ForceMode.Impulse);
     }
 
-    public void drop()
+    public void CauseDamageByGravityGun()
     {
-        is_connected = false;
-        _rigidbody.isKinematic = false;
+        IsConnected = false;
+        IsDirty = true;
+    }
+
+    public void DropPiece()
+    {
+        IsConnected = false;
+        if(rb == SpecialityGun.grabbedRB)
+        {
+            return;
+        }
+        else
+        {
+            rb.isKinematic = false;
+        }
     }
 }

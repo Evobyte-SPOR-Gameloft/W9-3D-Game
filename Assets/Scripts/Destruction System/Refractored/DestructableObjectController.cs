@@ -6,14 +6,10 @@ using UnityEngine;
 public class DestructableObjectController : MonoBehaviour
 {
     public GameObject root;
-    [HideInInspector] public DestroyedPieceController root_dest_piece;
+    [HideInInspector] public DestroyedPieceController destroyableRootPiece;
 
-    private List<DestroyedPieceController> destroyed_pieces = new List<DestroyedPieceController>();
-
-    private PhotonView _pv;
-    private PhotonTransformView _pvt;
+    private List<DestroyedPieceController> listOfDestroyablePieces = new List<DestroyedPieceController>();
     
-
     private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -27,96 +23,63 @@ public class DestructableObjectController : MonoBehaviour
 
             var _mc = child.gameObject.AddComponent<MeshCollider>();
             _mc.convex = true;
-            destroyed_pieces.Add(_dpc);
+            listOfDestroyablePieces.Add(_dpc);
         }
-        root_dest_piece = root.GetComponent<DestroyedPieceController>();
-        StartCoroutine(run_physics_steps(10));
+        destroyableRootPiece = root.GetComponent<DestroyedPieceController>();
+        StartCoroutine(RunPhysicsSteps(10));
     }
 
     private void Update()
     {
         
-        if(DestroyedPieceController.is_dirty)
+        if(DestroyedPieceController.IsDirty)
         {
 
-            foreach (var destroyed_piece in destroyed_pieces)
+            foreach (var destroyedPiece in listOfDestroyablePieces)
             {
-                destroyed_piece.visited = false;
+                destroyedPiece.WasVisited = false;
             }
 
 
-            // do a breadth first search to find all connected pieces
-            find_all_connected_pieces(root_dest_piece);
+            //Breadth first search to find all connected pieces
+            findAllConnectedPieces(destroyableRootPiece);
 
-            // drop all pieces not reachable from root
-            foreach (var piece in destroyed_pieces)
+            // Drop all pieces not reachable from root
+            foreach (var piece in listOfDestroyablePieces)
             {
-                if (piece && !piece.visited)
+                if (piece && !piece.WasVisited)
                 {
-                    piece.drop();
+                    piece.DropPiece();
                 }
             }
         }
     }
 
-    private void find_all_connected_pieces(DestroyedPieceController destroyed_piece)
+    private void findAllConnectedPieces(DestroyedPieceController destroyedPiece)
     {
-        if (!destroyed_piece.visited)
+        if (!destroyedPiece.WasVisited)
         {
-            if (!destroyed_piece.is_connected)
+            if (!destroyedPiece.IsConnected)
                 return;
-            destroyed_piece.visited = true;
+            destroyedPiece.WasVisited = true;
 
-            foreach (var _pdc in destroyed_piece.connected_to)
+            foreach (var connection in destroyedPiece.listOfConnections)
             {
-                find_all_connected_pieces(_pdc);
+                findAllConnectedPieces(connection);
             }
         }
         else
             return;
     }
 
-    private IEnumerator run_physics_steps(int step_count)
+    private IEnumerator RunPhysicsSteps(int stepsCount)
     {
-        for (int i = 0; i < step_count; i++)
+        for (int i = 0; i < stepsCount; i++)
             yield return new WaitForFixedUpdate();
         
-        foreach( var piece in destroyed_pieces)
+        foreach( var piece in listOfDestroyablePieces)
         {
-            piece.make_static();
+            piece.MakeStatic();
         }
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream)
-    {
-        if (stream.IsWriting)
-        {
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                var child = transform.GetChild(i);
-                if (child != null)
-                {
-                    stream.SendNext(child.localPosition);
-                    stream.SendNext(child.localRotation);
-                    stream.SendNext(child.localScale);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                var child = transform.GetChild(i);
-                if (child != null)
-                {
-                    child.localPosition = (Vector3)stream.ReceiveNext();
-                    child.localRotation = (Quaternion)stream.ReceiveNext();
-                    child.localScale = (Vector3)stream.ReceiveNext();
-                }
-            }
-        }
-    }
-
-
-
 }

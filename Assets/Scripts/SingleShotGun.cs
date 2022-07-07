@@ -47,7 +47,7 @@ public class SingleShotGun : Gun
             if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
             {
                 hit.collider.GetComponent<PhotonView>().RequestOwnership();
-                hit.collider.GetComponent<DestroyedPieceController>().cause_damage(ray.direction * impactForce);
+                hit.collider.GetComponent<DestroyedPieceController>().CauseDamage(ray.direction * impactForce);
                 PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
             }
             else if(Physics.Raycast(ray, out hit))
