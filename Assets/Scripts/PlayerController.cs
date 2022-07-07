@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private int currentItem;
 
+    public bool isPickedUp = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         else
         {
             Destroy(GetComponentInChildren<Camera>().gameObject);
-            Destroy(rb);
+            //Destroy(rb);
             Destroy(ui);
         }
     }
@@ -65,9 +67,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     {
         if (!PV.IsMine)
             return;
+
         Look();
         Move();
         Jump();
+
 
         if(currentItem != 2 && SpecialityGun.grabbedRB != null)
         {
@@ -158,13 +162,22 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     private void Move()
     {
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+
+        if (isPickedUp)
+        {
+            moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? 0.02f : 0.01f), ref smoothMoveVelocity, smoothTime);
+
+        }
+        else
+        {
+            moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+        }
 
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && grounded && !isPickedUp)
         {
             rb.AddForce(transform.up * jumpForce);
         }
