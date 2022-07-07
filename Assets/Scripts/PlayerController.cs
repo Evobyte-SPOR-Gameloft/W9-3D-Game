@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     PlayerManager playerManager;
 
+    private int currentItem;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,6 +69,12 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         Move();
         Jump();
 
+        if(currentItem != 2 && SpecialityGun.grabbedRB != null)
+        {
+            SpecialityGun.grabbedRB.isKinematic = false;
+            SpecialityGun.grabbedRB = null;
+        }
+
         if (Input.GetKey(KeyCode.LeftAlt))
         {
             Cursor.visible = true;
@@ -78,43 +86,55 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-
+        //Choose item by num keys
         for(int i = 0; i < items.Length; i++)
         {
             if(Input.GetKeyDown((i + 1).ToString()))
             {
                 EquipItem(i);
+                currentItem = i;
                 break;
             }
         }
 
+        //Choose item by scrolling up
         if(Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
         {
             if(itemIndex >= items.Length - 1)
             {
                 EquipItem(0);
+                currentItem = 0;
             }
             else
             {
                 EquipItem(itemIndex + 1);
+                currentItem = itemIndex +1;
             }
         }
+        //Choose item by scrolling down
         else if(Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
         {
             if(itemIndex <= 0)
             {
                 EquipItem(items.Length - 1);
+                currentItem = items.Length - 1;
             }
             else
             {
                 EquipItem(itemIndex - 1);
+                currentItem = itemIndex - 1;
             }
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            items[itemIndex].Use();
+            items[itemIndex].UsePrimary();
         }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            items[itemIndex].UseSecondary();
+        }
+
 
         //Die if you fall in void
         if(transform.position.y < -10f)

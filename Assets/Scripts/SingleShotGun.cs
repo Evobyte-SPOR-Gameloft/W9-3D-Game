@@ -16,11 +16,16 @@ public class SingleShotGun : Gun
         PV = GetComponent<PhotonView>();
     }
 
-    public override void Use()
+    public override void UsePrimary()
     {
         Shoot();
     }
-    
+
+    public override void UseSecondary()
+    {
+        Debug.Log("No secondary action was implemented!");
+    }
+
 
     public void Update()
     {
