@@ -11,6 +11,8 @@ public class SingleShotGun : Gun
 
     public float fireRate;
 
+    private float lastFired;
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -28,6 +30,18 @@ public class SingleShotGun : Gun
         {
             Debug.Log("R KEY PRESSED");
             StartCoroutine(ReloadGun());
+        }
+
+        if(Input.GetKey(KeyCode.Mouse0))
+        {
+            if(fireRate > 0)
+            {
+                 if (Time.time - lastFired > 1 / fireRate)
+                 {
+                    Shoot();
+                    lastFired = Time.time;
+                 }
+            }
         }
     }
 

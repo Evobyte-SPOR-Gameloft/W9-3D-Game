@@ -129,6 +129,7 @@ MonoBehaviour:
   bulletsToReload: 15
   reloadTime: 2.2
   cam: {fileID: 4298419746557651494}
+  fireRate: 0
 --- !u!114 &3645418776792328873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +205,7 @@ MonoBehaviour:
   bulletsToReload: 30
   reloadTime: 3.4
   cam: {fileID: 4298419746557651494}
+  fireRate: 13
 --- !u!114 &5507137957658618445
 MonoBehaviour:
   m_ObjectHideFlags: 0
