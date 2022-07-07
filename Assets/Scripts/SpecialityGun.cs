@@ -56,7 +56,7 @@ public class SpecialityGun : Gun
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
                     hit.collider.GetComponent<DestroyedPieceController>().CauseDamageByGravityGun();
                 }
-                else
+                else if(hit.collider != null)
                 {
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
                 }
