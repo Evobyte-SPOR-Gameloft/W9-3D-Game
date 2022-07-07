@@ -36,21 +36,23 @@ public class SpecialityGun : Gun
         if (!PV.IsMine)
             return;
 
-        if (grabbedRB)
+        if (grabbedRB != null)
         {
-            //grabbedRB.MovePosition(Vector3.Lerp(grabbedRB.position, objectHolder.transform.position, Time.deltaTime * lerpSpeed));
-
-            PV.RPC(nameof(RPC_Movement), RpcTarget.All);
-
+            grabbedRB.MovePosition(Vector3.Lerp(grabbedRB.position, objectHolder.transform.position, Time.deltaTime * lerpSpeed));
         }
     }
 
     private void PickUp()
     {
-        if (grabbedRB)
+        if (grabbedRB != null)
         {
             grabbedRB.isKinematic = false;
             grabbedRB = null;
+
+            if(grabbedRB != null && grabbedRB.GetComponent<PlayerController>() != null)
+            {
+                grabbedRB.gameObject.GetComponent<PlayerController>().isPickedUp = false;
+            }
         }
         else
         {
@@ -66,29 +68,19 @@ public class SpecialityGun : Gun
                     if (hit.collider.gameObject.GetComponent<PhotonView>().IsMine)
                         return;
 
-                    //Debug.Log(hit.collider.gameObject.GetComponent<Rigidbody>());
-
                     hit.collider.gameObject.GetComponent<PlayerController>().isPickedUp = true;
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
                 }
                 else if (Physics.Raycast(ray, out hit, maxGrabbingDistance, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
                 {
-                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
+                    //hit.collider.GetComponent<PhotonView>().RequestOwnership();
 
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
 
                     hit.collider.GetComponent<DestroyedPieceController>().CauseDamageByGravityGun();
                 }
-                else if (hit.collider != null)
-                {
-                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
 
-                    grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
-                }
-
-                //grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
-
-                if (grabbedRB)
+                if (grabbedRB != null)
                 {
                     grabbedRB.isKinematic = true;
                 }
@@ -98,20 +90,11 @@ public class SpecialityGun : Gun
 
     private void Push()
     {
-        if (grabbedRB)
+        if (grabbedRB != null)
         {
             grabbedRB.isKinematic = false;
             grabbedRB.AddForce(cam.transform.forward * pushForce, ForceMode.VelocityChange);
             grabbedRB = null;
-        }
-    }
-
-    [PunRPC]
-    private void RPC_Movement()
-    {
-        if(grabbedRB != null)
-        {
-            grabbedRB.MovePosition(Vector3.Lerp(grabbedRB.position, objectHolder.transform.position, Time.deltaTime * lerpSpeed));
         }
     }
 }
