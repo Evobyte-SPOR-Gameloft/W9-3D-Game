@@ -9,10 +9,6 @@ public class SingleShotGun : Gun
     [SerializeField] Camera cam;
     PhotonView PV;
 
-    public float fireRate;
-
-    private float lastFired;
-
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -37,49 +33,91 @@ public class SingleShotGun : Gun
             StartCoroutine(ReloadGun());
         }
 
-        if(Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetMouseButtonUp(0))
         {
-            if(fireRate > 0)
-            {
-                 if (Time.time - lastFired > 1 / fireRate)
-                 {
-                    Shoot();
-                    lastFired = Time.time;
-                 }
-            }
+            ShootingCooldownFinished();
         }
     }
 
     private void Shoot()
     {
-        if(magCapacity > 0 && cam != null)
+        if (((GunInfo)itemInfo).automatic == true)
         {
-            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-            RaycastHit hit;
-            ray.origin = cam.transform.position;
+            if (!((GunInfo)itemInfo).canShoot)
+                return;
 
-            if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
+            if (magCapacity > 0 && cam != null)
             {
-                hit.collider.GetComponent<PhotonView>().RequestOwnership();
-                hit.collider.GetComponent<DestroyedPieceController>().CauseDamage(ray.direction * impactForce);
-                PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
+                Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+                RaycastHit hit;
+                ray.origin = cam.transform.position;
+
+                if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
+                {
+                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
+                    hit.collider.GetComponent<DestroyedPieceController>().CauseDamage(ray.direction * impactForce);
+                    PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
+                }
+                else if (Physics.Raycast(ray, out hit))
+                {
+                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
+                    PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
+                }
+
+                magCapacity -= 1;
+                Debug.Log(magCapacity);
+
+                if (magCapacity == 0)
+                {
+                    Debug.Log("Out of ammo");
+                    StartCoroutine(ReloadGun());
+                }
+
+                ((GunInfo)itemInfo).canShoot = false;
+                Invoke(nameof(ShootingCooldownFinished), ((GunInfo)itemInfo).bulletDelay);
             }
-            else if(Physics.Raycast(ray, out hit))
-            {
-                hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
-                PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
-            }
 
-            magCapacity -= 1;
-            Debug.Log(magCapacity);
+        }
+        else
+        {
+            if (!((GunInfo)itemInfo).canShoot)
+                return;
 
-            if(magCapacity == 0)
+            if (magCapacity > 0 && cam != null)
             {
-                Debug.Log("Out of ammo");
-                StartCoroutine(ReloadGun());
+                Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+                RaycastHit hit;
+                ray.origin = cam.transform.position;
+
+                if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
+                {
+                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
+                    hit.collider.GetComponent<DestroyedPieceController>().CauseDamage(ray.direction * impactForce);
+                    PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
+                }
+                else if (Physics.Raycast(ray, out hit))
+                {
+                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
+                    PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
+                }
+
+                magCapacity -= 1;
+                Debug.Log(magCapacity);
+
+                if (magCapacity == 0)
+                {
+                    Debug.Log("Out of ammo");
+                    StartCoroutine(ReloadGun());
+                }
+
+                ((GunInfo)itemInfo).canShoot = false;
             }
         }
-        
+    }
+
+    private void ShootingCooldownFinished()
+    {
+        ((GunInfo)itemInfo).canShoot = true;
     }
 
     IEnumerator ReloadGun()

@@ -7,5 +7,11 @@ public class GunInfo : ItemInfo
 {
     public float minDamage;
     public float maxDamage;
+
     public bool automatic;
+
+    public bool canShoot = true;
+
+    public float bulletDelay;
+
 }

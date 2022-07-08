@@ -130,7 +130,6 @@ MonoBehaviour:
   reloadTime: 2.2
   impactForce: 35
   cam: {fileID: 4298419746557651494}
-  fireRate: 0
 --- !u!114 &3645418776792328873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +206,6 @@ MonoBehaviour:
   reloadTime: 3.4
   impactForce: 75
   cam: {fileID: 4298419746557651494}
-  fireRate: 13
 --- !u!114 &5507137957658618445
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
                 currentItem = itemIndex +1;
             }
         }
+
         //Choose item by scrolling down
         else if(Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
         {
@@ -137,11 +138,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             items[itemIndex].UsePrimary();
         }
-        else if (Input.GetMouseButtonDown(1))
+
+
+        if (Input.GetMouseButtonDown(1))
         {
             items[itemIndex].UseSecondary();
         }
