@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Rifle
   minDamage: 12
   maxDamage: 18
-  automatic: 0
+  automatic: 1
   canShoot: 1
-  bulletDelay: 0.1
+  bulletDelay: 0.01
