@@ -28,23 +28,27 @@ public class CameraSwitcher : MonoBehaviour
                 CamMode = 0;
             }
             else CamMode = 1;
+
+            StartCoroutine(CameraChange());
         }
-        
-        StartCoroutine(CameraChange());
+
     }
 
     IEnumerator CameraChange(){
         yield return new WaitForSeconds(0.01f);
-        
-        if(CamMode == 0)
+
+        if (FirstPersonCam != null && ThirdPersonCam != null)
         {
-            FirstPersonCam.SetActive(true);
-            ThirdPersonCam.SetActive(false);
-        }
-        if(CamMode == 1)
-        {
-            FirstPersonCam.SetActive(false);
-            ThirdPersonCam.SetActive(true);
+            if (CamMode == 0)
+            {
+                FirstPersonCam.SetActive(true);
+                ThirdPersonCam.SetActive(false);
+            }
+            if (CamMode == 1)
+            {
+                FirstPersonCam.SetActive(false);
+                ThirdPersonCam.SetActive(true);
+            }
         }
     }
 }

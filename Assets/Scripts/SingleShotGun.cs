@@ -18,11 +18,16 @@ public class SingleShotGun : Gun
         PV = GetComponent<PhotonView>();
     }
 
-    public override void Use()
+    public override void UsePrimary()
     {
         Shoot();
     }
-    
+
+    public override void UseSecondary()
+    {
+        Debug.Log("No secondary action was implemented!");
+    }
+
 
     public void Update()
     {
@@ -47,7 +52,7 @@ public class SingleShotGun : Gun
 
     private void Shoot()
     {
-        if(magCapacity > 0)
+        if(magCapacity > 0 && cam != null)
         {
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             RaycastHit hit;
@@ -56,13 +61,13 @@ public class SingleShotGun : Gun
             if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
             {
                 hit.collider.GetComponent<PhotonView>().RequestOwnership();
-                hit.collider.GetComponent<DestroyedPieceController>().cause_damage(ray.direction * impactForce);
+                hit.collider.GetComponent<DestroyedPieceController>().CauseDamage(ray.direction * impactForce);
                 PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
             }
             else if(Physics.Raycast(ray, out hit))
             {
                 hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
-                PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
+                PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
             }
 
             magCapacity -= 1;
