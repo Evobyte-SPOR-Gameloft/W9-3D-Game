@@ -58,7 +58,7 @@ public class SpecialityGun : Gun
         {
             RaycastHit hit;
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-            ray.origin = rayOrigin.transform.position;
+            ray.origin = cam.transform.position;
 
             if (Physics.Raycast(ray, out hit, maxGrabbingDistance))
             {
