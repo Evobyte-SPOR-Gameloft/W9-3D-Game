@@ -7,4 +7,5 @@ public class GunInfo : ItemInfo
 {
     public float minDamage;
     public float maxDamage;
+    public bool automatic;
 }
