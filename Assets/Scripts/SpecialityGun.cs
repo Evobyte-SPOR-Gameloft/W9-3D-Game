@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class SpecialityGun : Gun
     [SerializeField] Transform rayOrigin;
 
     [HideInInspector] public static Rigidbody grabbedRB;
+
+    private Player previousOwner;
 
     PhotonView PV;
 
@@ -38,7 +41,8 @@ public class SpecialityGun : Gun
 
         if (grabbedRB != null)
         {
-            grabbedRB.MovePosition(Vector3.Lerp(grabbedRB.position, objectHolder.transform.position, Time.deltaTime * lerpSpeed));
+            //grabbedRB.MovePosition(Vector3.Lerp(grabbedRB.position, objectHolder.transform.position, Time.deltaTime * lerpSpeed));
+            grabbedRB.transform.position = objectHolder.transform.position;
         }
     }
 
@@ -52,6 +56,7 @@ public class SpecialityGun : Gun
             if(grabbedRB != null && grabbedRB.GetComponent<PlayerController>() != null)
             {
                 grabbedRB.gameObject.GetComponent<PlayerController>().isPickedUp = false;
+                grabbedRB.gameObject.GetComponent<PhotonView>().TransferOwnership(previousOwner);
             }
         }
         else
@@ -69,11 +74,15 @@ public class SpecialityGun : Gun
                         return;
 
                     hit.collider.gameObject.GetComponent<PlayerController>().isPickedUp = true;
+
+                    previousOwner = hit.collider.GetComponent<PhotonView>().Owner;
+                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
+
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
                 }
                 else if (Physics.Raycast(ray, out hit, maxGrabbingDistance, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
                 {
-                    //hit.collider.GetComponent<PhotonView>().RequestOwnership();
+                    hit.collider.GetComponent<PhotonView>().RequestOwnership();
 
                     grabbedRB = hit.collider.gameObject.GetComponent<Rigidbody>();
 
@@ -95,6 +104,7 @@ public class SpecialityGun : Gun
             if (grabbedRB.GetComponent<PlayerController>() != null)
             {
                 grabbedRB.gameObject.GetComponent<PlayerController>().isPickedUp = false;
+                grabbedRB.gameObject.GetComponent<PhotonView>().TransferOwnership(previousOwner);
             }
 
             grabbedRB.isKinematic = false;

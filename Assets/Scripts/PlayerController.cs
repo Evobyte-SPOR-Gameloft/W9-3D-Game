@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void Update()
     {
+        if (isPickedUp)
+            return;
+
         if (!PV.IsMine)
             return;
 
@@ -75,6 +78,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
         if(currentItem != 2 && SpecialityGun.grabbedRB != null)
         {
+            if(SpecialityGun.grabbedRB.gameObject.GetComponent<PlayerController>() != null)
+            {
+                SpecialityGun.grabbedRB.gameObject.GetComponent<PlayerController>().isPickedUp = false;
+            }
             SpecialityGun.grabbedRB.isKinematic = false;
             SpecialityGun.grabbedRB = null;
         }
@@ -163,21 +170,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     {
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-        if (isPickedUp)
-        {
-            moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? 0.02f : 0.01f), ref smoothMoveVelocity, smoothTime);
-
-        }
-        else
-        {
-            moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
-        }
+        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
 
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && grounded && !isPickedUp)
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rb.AddForce(transform.up * jumpForce);
         }

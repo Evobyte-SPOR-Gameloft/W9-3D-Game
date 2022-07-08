@@ -38,7 +38,7 @@ public class SingleShotGun : Gun
 
     private void Shoot()
     {
-        if(magCapacity > 0)
+        if(magCapacity > 0 && cam != null)
         {
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             RaycastHit hit;
