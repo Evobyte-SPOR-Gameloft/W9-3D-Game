@@ -92,6 +92,11 @@ public class SpecialityGun : Gun
     {
         if (grabbedRB != null)
         {
+            if (grabbedRB.GetComponent<PlayerController>() != null)
+            {
+                grabbedRB.gameObject.GetComponent<PlayerController>().isPickedUp = false;
+            }
+
             grabbedRB.isKinematic = false;
             grabbedRB.AddForce(cam.transform.forward * pushForce, ForceMode.VelocityChange);
             grabbedRB = null;
