@@ -14,4 +14,7 @@ public class GunInfo : ItemInfo
 
     public float bulletDelay;
 
+    public float magCapacity;
+    public float bulletsToReload;
+
 }

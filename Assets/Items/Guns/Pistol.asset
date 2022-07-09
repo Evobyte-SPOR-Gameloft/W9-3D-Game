@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   itemName: Pistol
-  minDamage: 3
-  maxDamage: 9
+  minDamage: 34
+  maxDamage: 34
   automatic: 0
   canShoot: 1
   bulletDelay: 0.6
+  magCapacity: 15
+  bulletsToReload: 15

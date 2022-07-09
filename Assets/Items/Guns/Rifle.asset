@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: 
   itemName: Rifle
-  minDamage: 12
-  maxDamage: 18
+  minDamage: 41
+  maxDamage: 41
   automatic: 1
   canShoot: 1
-  bulletDelay: 0.01
+  bulletDelay: 0.098
+  magCapacity: 30
+  bulletsToReload: 30

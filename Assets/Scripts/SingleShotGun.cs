@@ -46,7 +46,7 @@ public class SingleShotGun : Gun
             if (!((GunInfo)itemInfo).canShoot)
                 return;
 
-            if (magCapacity > 0 && cam != null)
+            if (((GunInfo)itemInfo).magCapacity > 0 && cam != null)
             {
                 Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 RaycastHit hit;
@@ -64,10 +64,10 @@ public class SingleShotGun : Gun
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
                 }
 
-                magCapacity -= 1;
-                Debug.Log(magCapacity);
+                ((GunInfo)itemInfo).magCapacity -= 1;
+                Debug.Log(((GunInfo)itemInfo).magCapacity);
 
-                if (magCapacity == 0)
+                if (((GunInfo)itemInfo).magCapacity == 0)
                 {
                     Debug.Log("Out of ammo");
                     StartCoroutine(ReloadGun());
@@ -83,7 +83,7 @@ public class SingleShotGun : Gun
             if (!((GunInfo)itemInfo).canShoot)
                 return;
 
-            if (magCapacity > 0 && cam != null)
+            if (((GunInfo)itemInfo).magCapacity > 0 && cam != null)
             {
                 Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 RaycastHit hit;
@@ -101,10 +101,10 @@ public class SingleShotGun : Gun
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
                 }
 
-                magCapacity -= 1;
-                Debug.Log(magCapacity);
+                ((GunInfo)itemInfo).magCapacity -= 1;
+                Debug.Log(((GunInfo)itemInfo).magCapacity);
 
-                if (magCapacity == 0)
+                if (((GunInfo)itemInfo).magCapacity == 0)
                 {
                     Debug.Log("Out of ammo");
                     StartCoroutine(ReloadGun());
@@ -124,7 +124,7 @@ public class SingleShotGun : Gun
     {
         Debug.Log("Reloading gun");
         yield return new WaitForSeconds(reloadTime);
-        magCapacity = bulletsToReload;
+        ((GunInfo)itemInfo).magCapacity = ((GunInfo)itemInfo).bulletsToReload;
         Debug.Log("Reloaded new magazine");
     }
 
