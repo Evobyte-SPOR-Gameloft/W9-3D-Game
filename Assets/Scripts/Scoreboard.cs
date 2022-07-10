@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
-using System.Linq;
 
 public class Scoreboard : MonoBehaviourPunCallbacks
 {
     [SerializeField] Transform container;
     [SerializeField] GameObject scoreboardItemPrefab;
+    [SerializeField] CanvasGroup canvasGroup;
 
     Dictionary<Player, ScoreboardItem> scoreboardItems = new();
 
@@ -42,6 +42,18 @@ public class Scoreboard : MonoBehaviourPunCallbacks
     {
         Destroy(scoreboardItems[player].gameObject);
         scoreboardItems.Remove(player);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            canvasGroup.alpha = 1;
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            canvasGroup.alpha = 0;
+        }
     }
 
 
