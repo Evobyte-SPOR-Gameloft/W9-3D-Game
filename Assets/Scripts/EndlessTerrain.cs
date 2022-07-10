@@ -35,6 +35,7 @@ public class EndlessTerrain : MonoBehaviour {
 	}
 
 	void Update() {
+		viewer = GameObject.FindGameObjectWithTag("PlayerController").transform;
 		viewerPosition = new Vector2 (viewer.position.x, viewer.position.z) / scale;
 
 		if ((viewerPositionOld - viewerPosition).sqrMagnitude > sqrViewerMoveThresholdForChunkUpdate) {
