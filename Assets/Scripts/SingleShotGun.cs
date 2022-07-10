@@ -43,7 +43,24 @@ public class SingleShotGun : Gun
 
     private void Shoot()
     {
-        
+        if(((GunInfo)itemInfo).automatic == true)
+        {
+            if(Input.GetKeyDown(KeyCode.V))
+            {
+                Debug.Log("V KEY PRESSED");
+                ((GunInfo)itemInfo).automatic = false;
+                Debug.Log("FIRE MODE: SINGLE SHOT");
+            }
+        }
+        else if(((GunInfo)itemInfo).automatic == false)
+        {
+            if(Input.GetKeyDown(KeyCode.V))
+            {
+                Debug.Log("V KEY PRESSED");
+                ((GunInfo)itemInfo).automatic = true;
+                Debug.Log("FIRE MODE: AUTOMATIC");
+            }
+        }
         if (((GunInfo)itemInfo).automatic == true)
         {
             
@@ -80,8 +97,9 @@ public class SingleShotGun : Gun
 
                 ((GunInfo)itemInfo).canShoot = false;
                 Invoke(nameof(ShootingCooldownFinished), ((GunInfo)itemInfo).bulletDelay);
+                recoilScript.RecoilFire();
             }
-            recoilScript.RecoilFire();
+            
         }
         else
         {

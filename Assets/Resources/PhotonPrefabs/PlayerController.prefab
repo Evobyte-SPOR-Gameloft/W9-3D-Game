@@ -1159,10 +1159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98aa7e6a81aee3d4ea1c525ef81d7d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoilX: -5
+  recoilX: -8
   recoilY: 2
   recoilZ: 0.3
-  snappiness: 6
+  snappiness: 4
   returnSpeed: 3
 --- !u!1 &4772313423112683268
 GameObject:
