@@ -43,7 +43,7 @@ public class SingleShotGun : Gun
 
     private void Shoot()
     {
-        if(((GunInfo)itemInfo).automatic == true)
+        if(((GunInfo)itemInfo).automatic == true)//CHANGE FIREMODE INSTRUCTIONS
         {
             if(Input.GetKeyDown(KeyCode.V))
             {
