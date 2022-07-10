@@ -12,29 +12,35 @@ public class EndlessTerrain : MonoBehaviour {
 	public LODInfo[] detailLevels;
 	public static float maxViewDst;
 
+
 	public Transform viewer;
+
 	public Material mapMaterial;
+
+	
 
 	public static Vector2 viewerPosition;
 	Vector2 viewerPositionOld;
 	static MapGenerator mapGenerator;
 	int chunkSize;
 	int chunksVisibleInViewDst;
-
+	
 	Dictionary<Vector2, TerrainChunk> terrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
 	static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
 
 	void Start() {
+		
 		mapGenerator = FindObjectOfType<MapGenerator> ();
-
 		maxViewDst = detailLevels [detailLevels.Length - 1].visibleDstThreshold;
 		chunkSize = MapGenerator.mapChunkSize - 1;
 		chunksVisibleInViewDst = Mathf.RoundToInt(maxViewDst / chunkSize);
-
 		UpdateVisibleChunks ();
+		Debug.Log("=============This=============");
+		
 	}
 
 	void Update() {
+		viewer = GameObject.FindGameObjectWithTag("Player").transform;
 		viewerPosition = new Vector2 (viewer.position.x, viewer.position.z) / scale;
 
 		if ((viewerPositionOld - viewerPosition).sqrMagnitude > sqrViewerMoveThresholdForChunkUpdate) {
@@ -42,6 +48,7 @@ public class EndlessTerrain : MonoBehaviour {
 			UpdateVisibleChunks ();
 		}
 	}
+	
 		
 	void UpdateVisibleChunks() {
 
