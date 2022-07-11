@@ -20,3 +20,4 @@ MonoBehaviour:
   bulletDelay: 0.098
   magCapacity: 30
   bulletsToReload: 30
+  fireMode: 1

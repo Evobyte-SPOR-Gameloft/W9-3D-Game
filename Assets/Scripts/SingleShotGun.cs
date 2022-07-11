@@ -9,9 +9,11 @@ public class SingleShotGun : Gun
     [SerializeField] Camera cam;
     PhotonView PV;
 
+    private Recoil recoilScript;
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
+        recoilScript = GameObject.Find("Camera").GetComponent<Recoil>();
     }
 
     public override void UsePrimary()
@@ -37,17 +39,38 @@ public class SingleShotGun : Gun
         {
             ShootingCooldownFinished();
         }
+        if(((GunInfo)itemInfo).automatic == true)//CHANGE FIREMODE INSTRUCTIONS
+        {
+            if(Input.GetKeyDown(KeyCode.V))
+            {
+                Debug.Log("V KEY PRESSED");
+                ((GunInfo)itemInfo).automatic = false;
+                Debug.Log("FIRE MODE: AUTOMATIC");
+            }
+        }
+        else if(((GunInfo)itemInfo).automatic == false)
+        {
+            if(Input.GetKeyDown(KeyCode.V))
+            {
+                Debug.Log("V KEY PRESSED");
+                ((GunInfo)itemInfo).automatic = true;
+                Debug.Log("FIRE MODE: SINGLE SHOT");
+            }
+        }
     }
 
     private void Shoot()
     {
+        
         if (((GunInfo)itemInfo).automatic == true)
         {
+            
             if (!((GunInfo)itemInfo).canShoot)
                 return;
 
             if (((GunInfo)itemInfo).magCapacity > 0 && cam != null)
             {
+                
                 Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 RaycastHit hit;
                 ray.origin = cam.transform.position;
@@ -75,8 +98,9 @@ public class SingleShotGun : Gun
 
                 ((GunInfo)itemInfo).canShoot = false;
                 Invoke(nameof(ShootingCooldownFinished), ((GunInfo)itemInfo).bulletDelay);
+                recoilScript.RecoilFire();
             }
-
+            
         }
         else
         {
