@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
 
         //Die if you fall in void
-        if(transform.position.y < -10f)
+        if(transform.position.y < -30f)
         {
             Die();
         }
