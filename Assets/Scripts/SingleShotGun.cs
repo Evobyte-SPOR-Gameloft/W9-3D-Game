@@ -39,17 +39,13 @@ public class SingleShotGun : Gun
         {
             ShootingCooldownFinished();
         }
-    }
-
-    private void Shoot()
-    {
         if(((GunInfo)itemInfo).automatic == true)//CHANGE FIREMODE INSTRUCTIONS
         {
             if(Input.GetKeyDown(KeyCode.V))
             {
                 Debug.Log("V KEY PRESSED");
                 ((GunInfo)itemInfo).automatic = false;
-                Debug.Log("FIRE MODE: SINGLE SHOT");
+                Debug.Log("FIRE MODE: AUTOMATIC");
             }
         }
         else if(((GunInfo)itemInfo).automatic == false)
@@ -58,9 +54,14 @@ public class SingleShotGun : Gun
             {
                 Debug.Log("V KEY PRESSED");
                 ((GunInfo)itemInfo).automatic = true;
-                Debug.Log("FIRE MODE: AUTOMATIC");
+                Debug.Log("FIRE MODE: SINGLE SHOT");
             }
         }
+    }
+
+    private void Shoot()
+    {
+        
         if (((GunInfo)itemInfo).automatic == true)
         {
             
