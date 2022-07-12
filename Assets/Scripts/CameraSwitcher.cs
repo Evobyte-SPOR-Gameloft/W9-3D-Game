@@ -13,6 +13,8 @@ public class CameraSwitcher : MonoBehaviour
     public int CamMode;
 
     PhotonView PV;
+
+    [SerializeField] private GameObject playerModel;
     
     void Awake()
     {
@@ -23,6 +25,7 @@ public class CameraSwitcher : MonoBehaviour
     {
         if(!PV.IsMine)
             return;
+
         if(Input.GetButtonDown("CamSwitch")){
             if(CamMode == 1){
                 CamMode = 0;
@@ -43,11 +46,13 @@ public class CameraSwitcher : MonoBehaviour
             {
                 FirstPersonCam.SetActive(true);
                 ThirdPersonCam.SetActive(false);
+                playerModel.SetActive(false);
             }
             if (CamMode == 1)
             {
                 FirstPersonCam.SetActive(false);
                 ThirdPersonCam.SetActive(true);
+                playerModel.SetActive(true);
             }
         }
     }
