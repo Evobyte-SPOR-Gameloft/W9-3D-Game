@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     private readonly string deathAnimation = "isDead";
     private readonly string shootAnimation = "isShooting";
 
-    private readonly string moveAnimationSpeedMultiplier = "moveMultiplier";
+    private readonly string moveMultiplier = "moveMultiplier";
 
     private float horizontalRaw;
     private float verticalRaw;
@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             return;
 
         GetInput();
+
+        PlayerAnimation();
 
         Look();
         Move();
@@ -294,7 +296,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         if (horizontalRaw != 0 || verticalRaw != 0)
         {
             animator.SetBool(moveAnimation, true);
-            animator.SetFloat(moveAnimationSpeedMultiplier, (isSprinting ? (sprintSpeed * animationMultiplier) : (walkSpeed * animationMultiplier)));
+            animator.SetFloat(moveMultiplier, (isSprinting ? (sprintSpeed * animationMultiplier) : (walkSpeed * animationMultiplier)));
         }
         else animator.SetBool(moveAnimation, false);
     }

@@ -844,6 +844,7 @@ MonoBehaviour:
   smoothTime: 0.15
   cameraHolder: {fileID: 5096443856103284555}
   animator: {fileID: 4291228890965903037}
+  animationMultiplier: 0.2
   items:
   - {fileID: 8319212028274948096}
   - {fileID: 4349988500049379437}
