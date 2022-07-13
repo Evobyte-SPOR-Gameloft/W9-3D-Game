@@ -843,6 +843,7 @@ MonoBehaviour:
   jumpForce: 300
   smoothTime: 0.15
   cameraHolder: {fileID: 5096443856103284555}
+  animator: {fileID: 4291228890965903037}
   items:
   - {fileID: 8319212028274948096}
   - {fileID: 4349988500049379437}
@@ -1859,10 +1860,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2836004475591695743, guid: f432554f564e69242897607d34218939, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f432554f564e69242897607d34218939, type: 3}
+--- !u!95 &4291228890965903037 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2836004473841745626, guid: f432554f564e69242897607d34218939, type: 3}
+  m_PrefabInstance: {fileID: 2077851558144112743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4291228891070331192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2836004475591197023, guid: f432554f564e69242897607d34218939, type: 3}

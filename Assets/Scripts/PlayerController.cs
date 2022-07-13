@@ -15,6 +15,21 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     [SerializeField] GameObject cameraHolder;
 
+    [SerializeField] Animator animator;
+
+    [SerializeField] private float animationMultiplier = 0.2f;
+
+    private readonly string moveAnimation = "isMoving";
+    private readonly string deathAnimation = "isDead";
+    private readonly string shootAnimation = "isShooting";
+
+    private readonly string moveAnimationSpeedMultiplier = "moveMultiplier";
+
+    private float horizontalRaw;
+    private float verticalRaw;
+
+    bool isSprinting;
+
     bool grounded;
 
     [SerializeField] Item[] items;
@@ -70,6 +85,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
         if (!PV.IsMine)
             return;
+
+        GetInput();
 
         Look();
         Move();
@@ -156,6 +173,15 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             Die();
         }
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+        }
+
     }
 
     private void Look()
@@ -171,9 +197,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void Move()
     {
-        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        Vector3 moveDir = new Vector3(horizontalRaw, 0, verticalRaw).normalized;
 
-        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (isSprinting ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
 
     }
 
@@ -255,5 +281,21 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     private void Die()
     {
         playerManager.Die();
+    }
+
+    private void GetInput()
+    {
+        horizontalRaw = Input.GetAxisRaw("Horizontal");
+        verticalRaw = Input.GetAxisRaw("Vertical");
+    }
+
+    private void PlayerAnimation()
+    {
+        if (horizontalRaw != 0 || verticalRaw != 0)
+        {
+            animator.SetBool(moveAnimation, true);
+            animator.SetFloat(moveAnimationSpeedMultiplier, (isSprinting ? (sprintSpeed * animationMultiplier) : (walkSpeed * animationMultiplier)));
+        }
+        else animator.SetBool(moveAnimation, false);
     }
 }
