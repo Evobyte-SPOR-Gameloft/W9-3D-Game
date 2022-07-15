@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   itemName: Pistol
-  minDamage: 34
+  minDamage: 26
   maxDamage: 34
   automatic: 0
   canShoot: 1

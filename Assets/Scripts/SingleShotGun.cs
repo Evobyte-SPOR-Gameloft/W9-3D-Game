@@ -8,7 +8,7 @@ public class SingleShotGun : Gun
     [SerializeField] private float impactForce = 10f;
     [SerializeField] Camera cam;
     PhotonView PV;
-
+    public float distance;
     private Recoil recoilScript;
     private void Awake()
     {
@@ -83,7 +83,14 @@ public class SingleShotGun : Gun
                 }
                 else if (Physics.Raycast(ray, out hit))
                 {
-                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
+                    if(SetDistance(distance) < 15)
+                    {
+                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).maxDamage);
+                    }
+                    else
+                    {
+                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).minDamage);
+                    }
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
                 }
 
@@ -109,10 +116,11 @@ public class SingleShotGun : Gun
 
             if (((GunInfo)itemInfo).magCapacity > 0 && cam != null)
             {
+                
                 Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 RaycastHit hit;
                 ray.origin = cam.transform.position;
-
+                
                 if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Destructible"), QueryTriggerInteraction.Ignore))
                 {
                     hit.collider.GetComponent<PhotonView>().RequestOwnership();
@@ -121,7 +129,14 @@ public class SingleShotGun : Gun
                 }
                 else if (Physics.Raycast(ray, out hit))
                 {
-                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
+                    if(SetDistance(distance) < 15)
+                    {
+                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).maxDamage);
+                    }
+                    else
+                    {
+                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).minDamage);
+                    }
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
                 }
 
@@ -160,8 +175,15 @@ public class SingleShotGun : Gun
         {
             GameObject bulletImpactObj = Instantiate(bulletImpactPrefab, hitPosition + hitNormal * 0.001f, Quaternion.LookRotation(hitNormal, Vector3.up) * bulletImpactPrefab.transform.rotation);
             Destroy(bulletImpactObj, 10f);
+            distance = Vector3.Distance(bulletImpactObj.transform.position, GameObject.FindGameObjectWithTag("PlayerController").transform.position);
             bulletImpactObj.transform.SetParent(colliders[0].transform);
+            SetDistance(distance);
         }
+    }
+
+    private float SetDistance(float distance)
+    {
+        return distance;
     }
 
 }
