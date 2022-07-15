@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     private readonly string deathAnimation = "isDead";
     private readonly string shootAnimation = "isShooting";
     private readonly string reloadAnimation = "isReloading";
+    private readonly string jumpAnimation = "isJumping";
 
     private readonly string moveMultiplier = "moveMultiplier";
 
@@ -348,6 +349,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             }
             else animator.SetBool(reloadAnimation, false);
         }
+
+        //Jumping
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        {
+            animator.SetBool(jumpAnimation, true);
+        }
+        else animator.SetBool(jumpAnimation, false);
 
         //Death
         if (isDead == true)
