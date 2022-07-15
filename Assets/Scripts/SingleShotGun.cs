@@ -62,8 +62,10 @@ public class SingleShotGun : Gun
                 }
                 else if (Physics.Raycast(ray, out hit))
                 {
+
                     hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
+
                 }
 
                 ((GunInfo)itemInfo).magCapacity -= 1;

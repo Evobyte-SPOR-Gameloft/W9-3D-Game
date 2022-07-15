@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - PlayerController
+  - DeadPlayer
   layers:
   - Default
   - TransparentFX

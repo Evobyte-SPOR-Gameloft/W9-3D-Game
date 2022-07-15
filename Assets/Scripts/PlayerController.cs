@@ -83,7 +83,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void Update()
     {
-        if (isDead || isPickedUp || !PV.IsMine)
+        if (!PV.IsMine)
+            return;
+
+        if (isPickedUp)
             return;
 
         GetInput();
@@ -91,6 +94,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         PlayerAnimation();
 
         Look();
+
+        if (isDead)
+            return;
+
         Move();
         Jump();
 
@@ -256,7 +263,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     {
         if (!PV.IsMine)
             return;
-        rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+        if(rb != null)
+        {
+            rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -275,16 +285,22 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
         if(currentHealth <= 0)
         {
-            Die();
+            if (isDead == true)
+                return;
+
+            this.tag = "DeadPlayer";
+
+            isDead = true;
+
             PlayerManager.Find(info.Sender).GetKill();
+
+            Invoke(nameof(Die), 2.0f);
         }
     }
 
     private void Die()
     {
-        isDead = true;
-
-        playerManager.Invoke(nameof(Die), 2.0f);
+        playerManager.Die();
     }
 
     private void GetInput()
