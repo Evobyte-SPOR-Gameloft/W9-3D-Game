@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     [SerializeField] Animator animator;
 
     [SerializeField] private float animationMultiplier = 0.2f;
+
+    [SerializeField] private Canvas gameOverScreen;
 
     private readonly string moveAnimation = "isMoving";
     private readonly string deathAnimation = "isDead";
@@ -55,7 +58,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     public bool isPickedUp = false;
 
-    private bool isDead;
+    [HideInInspector] public bool isDead;
 
     private void Awake()
     {
@@ -287,6 +290,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         {
             if (isDead == true)
                 return;
+
+            gameOverScreen.gameObject.SetActive(true);
 
             this.tag = "DeadPlayer";
 
