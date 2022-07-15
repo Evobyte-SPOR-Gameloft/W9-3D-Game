@@ -46,13 +46,13 @@ public class CameraSwitcher : MonoBehaviour
             {
                 FirstPersonCam.SetActive(true);
                 ThirdPersonCam.SetActive(false);
-                playerModel.SetActive(false);
+                //playerModel.SetActive(false);
             }
             if (CamMode == 1)
             {
                 FirstPersonCam.SetActive(false);
                 ThirdPersonCam.SetActive(true);
-                playerModel.SetActive(true);
+                //playerModel.SetActive(true);
             }
         }
     }

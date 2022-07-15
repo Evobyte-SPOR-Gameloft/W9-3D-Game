@@ -125,11 +125,10 @@ MonoBehaviour:
   itemInfo: {fileID: 11400000, guid: 68e946c801d92b44bb2b9f1db7cf5614, type: 2}
   itemGameObject: {fileID: 6685979201077362489}
   bulletImpactPrefab: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
-  magCapacity: 15
-  bulletsToReload: 15
   reloadTime: 2.2
   impactForce: 35
   cam: {fileID: 4298419746557651494}
+  automatic: 0
 --- !u!114 &3645418776792328873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,11 +200,10 @@ MonoBehaviour:
   itemInfo: {fileID: 11400000, guid: 4e2c4b745507f454c9fe0827277db5aa, type: 2}
   itemGameObject: {fileID: 5880576940235222995}
   bulletImpactPrefab: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
-  magCapacity: 30
-  bulletsToReload: 30
   reloadTime: 3.4
   impactForce: 75
   cam: {fileID: 4298419746557651494}
+  automatic: 0
 --- !u!114 &5507137957658618445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,8 +571,6 @@ MonoBehaviour:
   itemInfo: {fileID: 11400000, guid: 2359f1a161d3ac84484b883730bbbb8b, type: 2}
   itemGameObject: {fileID: 4247335343879454076}
   bulletImpactPrefab: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 3}
-  magCapacity: 0
-  bulletsToReload: 0
   reloadTime: 0
   maxGrabbingDistance: 10
   pushForce: 10
@@ -979,7 +975,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4298419746557651491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

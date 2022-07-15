@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     private readonly string moveAnimation = "isMoving";
     private readonly string deathAnimation = "isDead";
     private readonly string shootAnimation = "isShooting";
+    private readonly string reloadAnimation = "isReloading";
 
     private readonly string moveMultiplier = "moveMultiplier";
 
@@ -291,13 +292,33 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         verticalRaw = Input.GetAxisRaw("Vertical");
     }
 
-    private void PlayerAnimation()
+    private bool IsPlayerMoving()
     {
         if (horizontalRaw != 0 || verticalRaw != 0)
+            return true;
+        else
+            return false;
+    }
+
+    private void PlayerAnimation()
+    {
+
+        if (IsPlayerMoving() == true)
         {
             animator.SetBool(moveAnimation, true);
             animator.SetFloat(moveMultiplier, (isSprinting ? (sprintSpeed * animationMultiplier) : (walkSpeed * animationMultiplier)));
         }
         else animator.SetBool(moveAnimation, false);
+
+        if (Input.GetMouseButton(0))
+        {
+            animator.SetBool(shootAnimation, true);
+        }
+        else animator.SetBool(shootAnimation, false);
+
+
+
+
+
     }
 }

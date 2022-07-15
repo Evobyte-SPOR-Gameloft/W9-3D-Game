@@ -9,9 +9,5 @@ public abstract class Gun : Item
 
     public GameObject bulletImpactPrefab;
 
-    public float magCapacity;
-
-    public float bulletsToReload;
-    
     public float reloadTime;
 }
