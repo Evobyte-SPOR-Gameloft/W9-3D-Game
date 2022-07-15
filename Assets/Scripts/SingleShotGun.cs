@@ -74,7 +74,6 @@ public class SingleShotGun : Gun
                     Debug.Log("Out of ammo");
                     StartCoroutine(ReloadGun());
                 }
-
                 ((GunInfo)itemInfo).canShoot = false;
                 Invoke(nameof(ShootingCooldownFinished), ((GunInfo)itemInfo).bulletDelay);
             }
@@ -124,10 +123,12 @@ public class SingleShotGun : Gun
 
     IEnumerator ReloadGun()
     {
+        isReloading = true;
         Debug.Log("Reloading gun");
         yield return new WaitForSeconds(reloadTime);
         ((GunInfo)itemInfo).magCapacity = ((GunInfo)itemInfo).bulletsToReload;
         Debug.Log("Reloaded new magazine");
+        isReloading = false;
     }
 
     [PunRPC]

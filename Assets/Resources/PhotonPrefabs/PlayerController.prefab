@@ -125,10 +125,10 @@ MonoBehaviour:
   itemInfo: {fileID: 11400000, guid: 68e946c801d92b44bb2b9f1db7cf5614, type: 2}
   itemGameObject: {fileID: 6685979201077362489}
   bulletImpactPrefab: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
-  reloadTime: 2.2
+  reloadTime: 2
   impactForce: 35
   cam: {fileID: 4298419746557651494}
-  automatic: 0
+  isReloading: 0
 --- !u!114 &3645418776792328873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,10 +200,10 @@ MonoBehaviour:
   itemInfo: {fileID: 11400000, guid: 4e2c4b745507f454c9fe0827277db5aa, type: 2}
   itemGameObject: {fileID: 5880576940235222995}
   bulletImpactPrefab: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
-  reloadTime: 3.4
+  reloadTime: 3
   impactForce: 75
   cam: {fileID: 4298419746557651494}
-  automatic: 0
+  isReloading: 0
 --- !u!114 &5507137957658618445
 MonoBehaviour:
   m_ObjectHideFlags: 0

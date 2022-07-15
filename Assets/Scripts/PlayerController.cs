@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     public bool isPickedUp = false;
 
+    private bool isDead;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -81,10 +83,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void Update()
     {
-        if (isPickedUp)
-            return;
-
-        if (!PV.IsMine)
+        if (isDead || isPickedUp || !PV.IsMine)
             return;
 
         GetInput();
@@ -139,7 +138,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             else
             {
                 EquipItem(itemIndex + 1);
-                currentItem = itemIndex +1;
+                currentItem = 1 +1;
             }
         }
 
@@ -283,7 +282,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void Die()
     {
-        playerManager.Die();
+        isDead = true;
+
+        playerManager.Invoke(nameof(Die), 2.0f);
     }
 
     private void GetInput()
@@ -302,7 +303,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void PlayerAnimation()
     {
-
+        //Movement
         if (IsPlayerMoving() == true)
         {
             animator.SetBool(moveAnimation, true);
@@ -310,13 +311,29 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         }
         else animator.SetBool(moveAnimation, false);
 
-        if (Input.GetMouseButton(0))
+        //Shooting
+        if (Input.GetMouseButton(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
         {
             animator.SetBool(shootAnimation, true);
         }
         else animator.SetBool(shootAnimation, false);
 
+        //Reloading
+        if (items[itemIndex].GetComponent<SingleShotGun>() != null)
+        {
+            if (items[itemIndex].GetComponent<SingleShotGun>().isReloading == true)
+            {
+                animator.SetBool(reloadAnimation, true);
+            }
+            else animator.SetBool(reloadAnimation, false);
+        }
 
+        //Death
+        if (isDead == true)
+        {
+            animator.SetBool(deathAnimation, true);
+        }
+        else animator.SetBool(deathAnimation, false);
 
 
 
