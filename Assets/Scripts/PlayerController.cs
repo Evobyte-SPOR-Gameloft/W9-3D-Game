@@ -334,11 +334,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         else animator.SetBool(moveAnimation, false);
 
         //Shooting
-        if (Input.GetMouseButton(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
+        if(items[itemIndex].GetComponent<SingleShotGun>() != null)
         {
-            animator.SetBool(shootAnimation, true);
+            if (Input.GetMouseButton(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
+            {
+                animator.SetBool(shootAnimation, true);
+            }
+            else animator.SetBool(shootAnimation, false);
         }
-        else animator.SetBool(shootAnimation, false);
 
         //Reloading
         if (items[itemIndex].GetComponent<SingleShotGun>() != null)
@@ -351,11 +354,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         }
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
-        {
-            animator.SetBool(jumpAnimation, true);
-        }
-        else animator.SetBool(jumpAnimation, false);
+        //if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        //{
+        //    animator.SetBool(jumpAnimation, true);
+        //}
+        //else animator.SetBool(jumpAnimation, false);
 
         //Death
         if (isDead == true)
