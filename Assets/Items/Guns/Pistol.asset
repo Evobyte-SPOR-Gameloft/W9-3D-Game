@@ -17,6 +17,6 @@ MonoBehaviour:
   maxDamage: 34
   automatic: 0
   canShoot: 1
-  bulletDelay: 0.6
+  bulletDelay: 1
   magCapacity: 15
   bulletsToReload: 15
