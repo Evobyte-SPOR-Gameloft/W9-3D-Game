@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class SpecialityGun : Gun
 {
-    [SerializeField] private float maxGrabbingDistance = 7f, pushForce = 60f, lerpSpeed = 100f;
+    [SerializeField] private float maxGrabbingDistance = 7f;
+    [SerializeField] private float pushForce = 60f;
+    //[SerializeField] private float lerpSpeed = 100f;
 
     [SerializeField] Camera cam;
 

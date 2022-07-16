@@ -2,6 +2,8 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -14,6 +16,26 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     [SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 
     [SerializeField] GameObject cameraHolder;
+
+    [SerializeField] Animator animator;
+
+    [SerializeField] private float animationMultiplier = 0.2f;
+
+    [SerializeField] private Canvas gameOverScreen;
+
+    private readonly string moveAnimation = "isMoving";
+    private readonly string deathAnimation = "isDead";
+    private readonly string shootAutoAnimation = "isShootingAuto";
+    private readonly string shootSemiAnimation = "isShootingSemi";
+    private readonly string reloadAnimation = "isReloading";
+    //private readonly string jumpAnimation = "isJumping";
+
+    private readonly string moveMultiplier = "moveMultiplier";
+
+    private float horizontalRaw;
+    private float verticalRaw;
+
+    bool isSprinting;
 
     bool grounded;
 
@@ -38,6 +60,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     private int currentItem;
 
     public bool isPickedUp = false;
+
+    [HideInInspector] public bool isDead;
 
     private void Awake()
     {
@@ -65,13 +89,21 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void Update()
     {
-        if (isPickedUp)
-            return;
-
         if (!PV.IsMine)
             return;
 
+        if (isPickedUp)
+            return;
+
+        GetInput();
+
+        PlayerAnimation();
+
         Look();
+
+        if (isDead)
+            return;
+
         Move();
         Jump();
 
@@ -119,7 +151,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             else
             {
                 EquipItem(itemIndex + 1);
-                currentItem = itemIndex +1;
+                currentItem = 1 +1;
             }
         }
 
@@ -156,6 +188,15 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             Die();
         }
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+        }
+
     }
 
     private void Look()
@@ -171,9 +212,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private void Move()
     {
-        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        Vector3 moveDir = new Vector3(horizontalRaw, 0, verticalRaw).normalized;
 
-        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (isSprinting ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
 
     }
 
@@ -228,7 +269,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     {
         if (!PV.IsMine)
             return;
-        rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+        if(rb != null)
+        {
+            rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -247,8 +291,18 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
         if(currentHealth <= 0)
         {
-            Die();
+            if (isDead == true)
+                return;
+
+            gameOverScreen.gameObject.SetActive(true);
+
+            this.tag = "DeadPlayer";
+
+            isDead = true;
+
             PlayerManager.Find(info.Sender).GetKill();
+
+            Invoke(nameof(Die), 2.0f);
         }
     }
 
@@ -256,4 +310,84 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     {
         playerManager.Die();
     }
+
+    private void GetInput()
+    {
+        horizontalRaw = Input.GetAxisRaw("Horizontal");
+        verticalRaw = Input.GetAxisRaw("Vertical");
+    }
+
+    private bool IsPlayerMoving()
+    {
+        if (horizontalRaw != 0 || verticalRaw != 0)
+            return true;
+        else
+            return false;
+    }
+
+    private void PlayerAnimation()
+    {
+        //Movement
+        if (IsPlayerMoving() == true)
+        {
+            animator.SetBool(moveAnimation, true);
+            animator.SetFloat(moveMultiplier, (isSprinting ? (sprintSpeed * animationMultiplier) : (walkSpeed * animationMultiplier)));
+        }
+        else animator.SetBool(moveAnimation, false);
+
+        //Shooting
+        if(items[itemIndex].GetComponent<SingleShotGun>() != null)
+        {
+            if(currentItem == 0)
+            {
+                if (Input.GetMouseButton(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
+                {
+                    animator.SetBool(shootAutoAnimation, true);
+                }
+                else animator.SetBool(shootAutoAnimation, false);
+            }
+            else if(currentItem == 1)
+            {
+                if (Input.GetMouseButtonDown(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
+                {
+                    animator.SetBool(shootSemiAnimation, true);
+                    //Invoke(nameof(SetSemiAnimationBackToFalse), 0.1f);
+                }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    animator.SetBool(shootSemiAnimation, false);
+                }
+            }
+        }
+
+        //Reloading
+        if (items[itemIndex].GetComponent<SingleShotGun>() != null)
+        {
+            if (items[itemIndex].GetComponent<SingleShotGun>().isReloading == true)
+            {
+                animator.SetBool(reloadAnimation, true);
+            }
+            else animator.SetBool(reloadAnimation, false);
+        }
+
+        //Jumping
+        //if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        //{
+        //    animator.SetBool(jumpAnimation, true);
+        //}
+        //else animator.SetBool(jumpAnimation, false);
+
+        //Death
+        if (isDead == true)
+        {
+            animator.SetBool(deathAnimation, true);
+        }
+        else animator.SetBool(deathAnimation, false);
+    }
+
+    private void SetSemiAnimationBackToFalse()
+    {
+        animator.SetBool(shootSemiAnimation, false);
+    }
+
 }

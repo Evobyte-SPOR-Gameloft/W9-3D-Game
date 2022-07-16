@@ -10,6 +10,9 @@ public class SingleShotGun : Gun
     PhotonView PV;
     public float distance;
     private Recoil recoilScript;
+
+    [HideInInspector] public bool isReloading;
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -91,7 +94,10 @@ public class SingleShotGun : Gun
                     {
                         hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).minDamage);
                     }
+
+                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
+
                 }
 
                 ((GunInfo)itemInfo).magCapacity -= 1;
@@ -102,7 +108,6 @@ public class SingleShotGun : Gun
                     Debug.Log("Out of ammo");
                     StartCoroutine(ReloadGun());
                 }
-
                 ((GunInfo)itemInfo).canShoot = false;
                 Invoke(nameof(ShootingCooldownFinished), ((GunInfo)itemInfo).bulletDelay);
                 recoilScript.RecoilFire();
@@ -161,10 +166,12 @@ public class SingleShotGun : Gun
 
     IEnumerator ReloadGun()
     {
+        isReloading = true;
         Debug.Log("Reloading gun");
         yield return new WaitForSeconds(reloadTime);
         ((GunInfo)itemInfo).magCapacity = ((GunInfo)itemInfo).bulletsToReload;
         Debug.Log("Reloaded new magazine");
+        isReloading = false;
     }
 
     [PunRPC]
@@ -174,8 +181,8 @@ public class SingleShotGun : Gun
         if(colliders.Length != 0)
         {
             GameObject bulletImpactObj = Instantiate(bulletImpactPrefab, hitPosition + hitNormal * 0.001f, Quaternion.LookRotation(hitNormal, Vector3.up) * bulletImpactPrefab.transform.rotation);
-            Destroy(bulletImpactObj, 10f);
             distance = Vector3.Distance(bulletImpactObj.transform.position, GameObject.FindGameObjectWithTag("PlayerController").transform.position);
+            Destroy(bulletImpactObj, 1.0f);
             bulletImpactObj.transform.SetParent(colliders[0].transform);
             SetDistance(distance);
         }
