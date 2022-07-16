@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,11 +58,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     PlayerManager playerManager;
 
-    private int currentItem;
-
     public bool isPickedUp = false;
 
     [HideInInspector] public bool isDead;
+
+    [SerializeField] private TMP_Text currentItemText;
+    [SerializeField] private TMP_Text currentItemAmmo;
+
+    [SerializeField] private Canvas reloadingScreen;
 
     private void Awake()
     {
@@ -97,6 +101,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
         GetInput();
 
+        UpdateHUDInfo();
+
         PlayerAnimation();
 
         Look();
@@ -107,8 +113,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         Move();
         Jump();
 
+        ShowReloadingPrompt();
 
-        if(currentItem != 2 && SpecialityGun.grabbedRB != null)
+        if (itemIndex != 2 && SpecialityGun.grabbedRB != null)
         {
             if(SpecialityGun.grabbedRB.gameObject.GetComponent<PlayerController>() != null)
             {
@@ -135,7 +142,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             if(Input.GetKeyDown((i + 1).ToString()))
             {
                 EquipItem(i);
-                currentItem = i;
                 break;
             }
         }
@@ -146,12 +152,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             if(itemIndex >= items.Length - 1)
             {
                 EquipItem(0);
-                currentItem = 0;
             }
             else
             {
                 EquipItem(itemIndex + 1);
-                currentItem = 1 +1;
             }
         }
 
@@ -161,12 +165,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             if(itemIndex <= 0)
             {
                 EquipItem(items.Length - 1);
-                currentItem = items.Length - 1;
             }
             else
             {
                 EquipItem(itemIndex - 1);
-                currentItem = itemIndex - 1;
             }
         }
 
@@ -275,6 +277,25 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         }
     }
 
+    private void UpdateHUDInfo()
+    {
+        currentItemText.text = itemIndex switch
+        {
+            0 => "Rifle",
+            1 => "Pistol",
+            2 => "GraviGun",
+            _ => "Weapon",
+        };
+
+        currentItemAmmo.text = itemIndex switch
+        {
+            0 => $"{items[itemIndex].GetComponent<SingleShotGun>().currentBullets}/{items[itemIndex].GetComponent<SingleShotGun>().maxBullets}",
+            1 => $"{items[itemIndex].GetComponent<SingleShotGun>().currentBullets}/{items[itemIndex].GetComponent<SingleShotGun>().maxBullets}",
+            2 => "   \u221E",
+            _ => "99/99",
+        };
+    }
+
     public void TakeDamage(float damage)
     {
         PV.RPC(nameof(RPC_TakeDamage), PV.Owner, damage);
@@ -338,7 +359,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         //Shooting
         if(items[itemIndex].GetComponent<SingleShotGun>() != null)
         {
-            if(currentItem == 0)
+            //Auto
+            if(itemIndex == 0)
             {
                 if (Input.GetMouseButton(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
                 {
@@ -346,16 +368,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
                 }
                 else animator.SetBool(shootAutoAnimation, false);
             }
-            else if(currentItem == 1)
+            //Semi
+            else if(itemIndex == 1)
             {
                 if (Input.GetMouseButtonDown(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
                 {
                     animator.SetBool(shootSemiAnimation, true);
-                    //Invoke(nameof(SetSemiAnimationBackToFalse), 0.1f);
-                }
-                else if (Input.GetMouseButtonUp(0))
-                {
-                    animator.SetBool(shootSemiAnimation, false);
+                    Invoke(nameof(SetSemiAnimationBackToFalse), 0.1f);
                 }
             }
         }
@@ -388,6 +407,15 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     private void SetSemiAnimationBackToFalse()
     {
         animator.SetBool(shootSemiAnimation, false);
+    }
+
+    private void ShowReloadingPrompt()
+    {
+        if (items[itemIndex].GetComponent<SingleShotGun>() != null && items[itemIndex].GetComponent<SingleShotGun>().isReloading == true)
+        {
+           reloadingScreen.gameObject.SetActive(true);
+        }
+        else reloadingScreen.gameObject.SetActive(false);
     }
 
 }

@@ -12,6 +12,8 @@ public class SingleShotGun : Gun
     private Recoil recoilScript;
 
     [HideInInspector] public bool isReloading;
+    [HideInInspector] public int currentBullets;
+    [HideInInspector] public int maxBullets;
 
     private void Awake()
     {
@@ -60,6 +62,9 @@ public class SingleShotGun : Gun
                 Debug.Log("FIRE MODE: SINGLE SHOT");
             }
         }
+
+        currentBullets = (int)((GunInfo)itemInfo).magCapacity;
+        maxBullets = (int)((GunInfo)itemInfo).bulletsToReload;
     }
 
     private void Shoot()
