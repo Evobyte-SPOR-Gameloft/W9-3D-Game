@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,9 +25,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     private readonly string moveAnimation = "isMoving";
     private readonly string deathAnimation = "isDead";
-    private readonly string shootAnimation = "isShooting";
+    private readonly string shootAutoAnimation = "isShootingAuto";
+    private readonly string shootSemiAnimation = "isShootingSemi";
     private readonly string reloadAnimation = "isReloading";
-    private readonly string jumpAnimation = "isJumping";
+    //private readonly string jumpAnimation = "isJumping";
 
     private readonly string moveMultiplier = "moveMultiplier";
 
@@ -336,11 +338,26 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         //Shooting
         if(items[itemIndex].GetComponent<SingleShotGun>() != null)
         {
-            if (Input.GetMouseButton(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
+            if(currentItem == 0)
             {
-                animator.SetBool(shootAnimation, true);
+                if (Input.GetMouseButton(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
+                {
+                    animator.SetBool(shootAutoAnimation, true);
+                }
+                else animator.SetBool(shootAutoAnimation, false);
             }
-            else animator.SetBool(shootAnimation, false);
+            else if(currentItem == 1)
+            {
+                if (Input.GetMouseButtonDown(0) && items[itemIndex].GetComponent<SingleShotGun>().isReloading == false)
+                {
+                    animator.SetBool(shootSemiAnimation, true);
+                    //Invoke(nameof(SetSemiAnimationBackToFalse), 0.1f);
+                }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    animator.SetBool(shootSemiAnimation, false);
+                }
+            }
         }
 
         //Reloading
@@ -366,8 +383,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             animator.SetBool(deathAnimation, true);
         }
         else animator.SetBool(deathAnimation, false);
-
-
-
     }
+
+    private void SetSemiAnimationBackToFalse()
+    {
+        animator.SetBool(shootSemiAnimation, false);
+    }
+
 }
