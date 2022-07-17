@@ -67,6 +67,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     [SerializeField] private Canvas reloadingScreen;
 
+    [SerializeField] RawImage crosshair;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -413,9 +415,19 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
     {
         if (items[itemIndex].GetComponent<SingleShotGun>() != null && items[itemIndex].GetComponent<SingleShotGun>().isReloading == true)
         {
-           reloadingScreen.gameObject.SetActive(true);
+            reloadingScreen.gameObject.SetActive(true);
+            crosshair.enabled = false;
         }
-        else reloadingScreen.gameObject.SetActive(false);
+        else
+        {
+            reloadingScreen.gameObject.SetActive(false);
+
+            if(GetComponent<CameraSwitcher>().CamMode == 0)
+            {
+                crosshair.enabled = true;
+            }
+            else crosshair.enabled = false;
+        }
     }
 
 }

@@ -16,14 +16,10 @@ public class CameraSwitcher : MonoBehaviour
     PhotonView PV;
 
     [SerializeField] private GameObject playerModel;
-
-    private RawImage crosshair;
     
     void Awake()
     {
         PV = GetComponent<PhotonView>();
-        crosshair = GameObject.FindWithTag("Crosshair").GetComponent<RawImage>();
-
     }
 
     void Update()
@@ -52,14 +48,12 @@ public class CameraSwitcher : MonoBehaviour
                 FirstPersonCam.SetActive(true);
                 ThirdPersonCam.SetActive(false);
                 //playerModel.SetActive(false);
-                crosshair.enabled = true;
             }
             if (CamMode == 1)
             {
                 FirstPersonCam.SetActive(false);
                 ThirdPersonCam.SetActive(true);
                 //playerModel.SetActive(true);
-                crosshair.enabled = false;
             }
         }
     }
