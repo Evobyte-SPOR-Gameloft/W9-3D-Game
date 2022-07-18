@@ -422,11 +422,20 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         {
             reloadingScreen.gameObject.SetActive(false);
 
-            if(GetComponent<CameraSwitcher>().CamMode == 0)
+            if (GetComponent<CameraSwitcher>().CamMode == 0)
             {
-                crosshair.enabled = true;
+                if (crosshair != null)
+                {
+                    crosshair.enabled = true;
+                }
             }
-            else crosshair.enabled = false;
+            else
+            {
+                if(crosshair != null)
+                {
+                    crosshair.enabled = false;
+                }
+            }
         }
     }
 

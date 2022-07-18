@@ -1469,7 +1469,6 @@ MonoBehaviour:
   ThirdPersonCam: {fileID: 3529608411033320733}
   CamMode: 0
   playerModel: {fileID: 4291228891070358808}
-  crosshair: {fileID: 1696687107735314073}
 --- !u!114 &6171703745198994430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 0
+  m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
@@ -3486,9 +3485,6 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isDead
-  - Type: 4
-    SynchronizeType: 2
-    Name: isShooting
   - Type: 1
     SynchronizeType: 2
     Name: moveMultiplier
@@ -3498,6 +3494,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isJumping
+  - Type: 4
+    SynchronizeType: 2
+    Name: isShootingAuto
+  - Type: 4
+    SynchronizeType: 2
+    Name: isShootingSemi
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
