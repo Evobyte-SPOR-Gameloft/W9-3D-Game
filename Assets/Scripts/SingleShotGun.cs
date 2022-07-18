@@ -91,8 +91,10 @@ public class SingleShotGun : Gun
                 }
                 else if (Physics.Raycast(ray, out hit))
                 {
-                    if(SetDistance(distance) < 15)
+                    
+                    if(distance < 15)
                     {
+                        
                         hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).maxDamage);
                     }
                     else
@@ -100,8 +102,9 @@ public class SingleShotGun : Gun
                         hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).minDamage);
                     }
 
-                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
+                    //hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
+                    Debug.Log("Distance to target: " + distance);
 
                 }
 
@@ -139,7 +142,7 @@ public class SingleShotGun : Gun
                 }
                 else if (Physics.Raycast(ray, out hit))
                 {
-                    if(SetDistance(distance) < 15)
+                    if(distance < 15)
                     {
                         hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).maxDamage);
                     }
@@ -189,13 +192,6 @@ public class SingleShotGun : Gun
             distance = Vector3.Distance(bulletImpactObj.transform.position, GameObject.FindGameObjectWithTag("PlayerController").transform.position);
             Destroy(bulletImpactObj, 1.0f);
             bulletImpactObj.transform.SetParent(colliders[0].transform);
-            SetDistance(distance);
         }
     }
-
-    private float SetDistance(float distance)
-    {
-        return distance;
-    }
-
 }
