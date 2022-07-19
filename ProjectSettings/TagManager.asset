@@ -11,6 +11,7 @@ TagManager:
   - Crosshair
   - EnemyZombie
   - DeadZombie
+  - GroundCheck
   layers:
   - Default
   - TransparentFX
