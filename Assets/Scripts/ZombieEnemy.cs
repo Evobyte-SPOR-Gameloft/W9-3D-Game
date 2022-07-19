@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 {
-    [SerializeField] private float walkSpeed = 3.0f;
-    [SerializeField] private float runSpeed = 5.0f;
-    [SerializeField] private float rotationSpeed = 150f;
-    [SerializeField] private float currentHealth = 100f;
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float minAttackDamage = 18;
-    [SerializeField] private float maxAttackDamage = 36;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float currentHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float minAttackDamage;
+    [SerializeField] private float maxAttackDamage;
 
     [SerializeField] private float animationMultiplier = 0.2f;
 
@@ -39,22 +39,59 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
     private bool isDead = false;
 
+    public GameObject target;
+
+    private Vector3 moveDirection;
+
+    private CapsuleCollider collider;
+
+    private void Start()
+    {
+        target = GameObject.FindWithTag("PlayerController");
+    }
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
+        collider = GetComponent<CapsuleCollider>();
     }
     void Update()
     {
-        if(isDead == false)
-        {
-            if(isStrolling == false)
-            {
-                StartCoroutine(Strolling());
-            }
-
-            StrollingRotationLogic();
-        }
         ZombieAnimation();
+
+        if (isDead)
+            return;
+        
+        /*if(isStrolling == false)
+        {
+            StartCoroutine(Strolling());
+        }
+
+        StrollingRotationLogic();*/
+
+        if(target == null)
+        {
+            target = GameObject.FindWithTag("PlayerController");
+        }
+
+        ZombieAnimation();
+    }
+
+    private void FixedUpdate()
+    {
+        ChasePlayer();
+    }
+
+    private void ChasePlayer()
+    {
+        if (target == null)
+            return;
+
+        transform.LookAt((target.transform));
+
+        isChasing = true;
+
+        transform.Translate(runSpeed * Time.deltaTime * Vector3.forward);
     }
 
     private void StrollingRotationLogic()
