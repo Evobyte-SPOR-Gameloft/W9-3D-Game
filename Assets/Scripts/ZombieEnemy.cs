@@ -1,15 +1,17 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieEnemy : MonoBehaviour
+public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 {
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float minAttackDamage;
-    [SerializeField] private float maxAttackDamage;
+    [SerializeField] private float walkSpeed = 3.0f;
+    [SerializeField] private float runSpeed = 5.0f;
+    [SerializeField] private float rotationSpeed = 150f;
+    [SerializeField] private float currentHealth = 100f;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float minAttackDamage = 18;
+    [SerializeField] private float maxAttackDamage = 36;
 
     [SerializeField] private float animationMultiplier = 0.2f;
 
@@ -20,6 +22,7 @@ public class ZombieEnemy : MonoBehaviour
 
     private readonly string moveMultiplier = "moveMultiplier";
 
+    PhotonView PV;
 
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody rb;
@@ -36,15 +39,21 @@ public class ZombieEnemy : MonoBehaviour
 
     private bool isDead = false;
 
+    private void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
     void Update()
     {
-        if(isStrolling == false)
+        if(isDead == false)
         {
-            StartCoroutine(Strolling());
+            if(isStrolling == false)
+            {
+                StartCoroutine(Strolling());
+            }
+
+            StrollingRotationLogic();
         }
-
-        StrollingRotationLogic();
-
         ZombieAnimation();
     }
 
@@ -67,8 +76,8 @@ public class ZombieEnemy : MonoBehaviour
     }
     private IEnumerator Strolling()
     {
-        float walkWait = Random.Range(2.0f, 4.0f);
-        float walkTime = Random.Range(2.5f, 5.0f);
+        float walkWait = Random.Range(1.0f, 2.0f);
+        float walkTime = Random.Range(1.5f, 3.0f);
 
         float rotateWait = Random.Range(1.0f, 3.0f);
         float rotationTime = Random.Range(0.1f, 0.7f);
@@ -150,4 +159,36 @@ public class ZombieEnemy : MonoBehaviour
             animator.SetBool(deathAnimation, false);
         }
     }
+
+    public void TakeDamage(float damage)
+    {
+        PV.RPC(nameof(RPC_TakeDamage), PV.Owner, damage);
+    }
+
+    [PunRPC]
+    private void RPC_TakeDamage(float damage, PhotonMessageInfo info)
+    {
+        currentHealth -= damage;
+
+        //healthbarImage.fillAmount = currentHealth / maxHealth;
+
+        if (currentHealth <= 0)
+        {
+            if (isDead == true)
+                return;
+
+            this.tag = "DeadZombie";
+
+            isDead = true;
+
+            PlayerManager.Find(info.Sender).GetMonsterKill();
+
+            Destroy(gameObject, 1.0f);
+        }
+
+    }
+
+
+
+
 }

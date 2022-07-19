@@ -91,7 +91,6 @@ public class SingleShotGun : Gun
                 }
                 else if (Physics.Raycast(ray, out hit))
                 {
-                    
                     if(distance < 15)
                     {
                         

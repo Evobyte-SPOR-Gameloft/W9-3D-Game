@@ -9,6 +9,8 @@ TagManager:
   - DeadPlayer
   - GameOverScreen
   - Crosshair
+  - EnemyZombie
+  - DeadZombie
   layers:
   - Default
   - TransparentFX

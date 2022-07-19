@@ -13,7 +13,8 @@ public class PlayerManager : MonoBehaviour
 
     GameObject controller;
 
-    int kills;
+    int monsterKills;
+    int playerKills;
     int deaths;
 
     private void Awake()
@@ -52,13 +53,28 @@ public class PlayerManager : MonoBehaviour
         PV.RPC(nameof(RPC_GetKill), PV.Owner);
     }
 
+    public void GetMonsterKill()
+    {
+        PV.RPC(nameof(RPC_GetMonsterKill), PV.Owner);
+    }
+
     [PunRPC]
     void RPC_GetKill()
     {
-        kills++;
+        playerKills++;
 
         Hashtable hash = new Hashtable();
-        hash.Add("kills", kills);
+        hash.Add("playerKills", playerKills);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+    }
+
+    [PunRPC]
+    void RPC_GetMonsterKill()
+    {
+        monsterKills++;
+        Debug.Log($"Monster Kills:{monsterKills}");
+        Hashtable hash = new Hashtable();
+        hash.Add("monsterKills", monsterKills);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }
 
