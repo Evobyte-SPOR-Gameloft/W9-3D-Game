@@ -24,13 +24,17 @@ public class ZombieEnemy : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody rb;
 
-    private bool zombieIsWalking = false;
-    private bool zombieIsChasing = false;
+    private bool isWalking = false;
+    private bool isChasing = false;
 
     private bool isRotatingLeft = false;
     private bool isRotatingRight = false;
 
     private bool isStrolling = false;
+
+    private bool isAttacking = false;
+
+    private bool isDead = false;
 
     void Update()
     {
@@ -39,24 +43,28 @@ public class ZombieEnemy : MonoBehaviour
             StartCoroutine(Strolling());
         }
 
-        ZombieAnimation();
+        StrollingRotationLogic();
 
-        if(isRotatingRight == true)
+        ZombieAnimation();
+    }
+
+    private void StrollingRotationLogic()
+    {
+        if (isRotatingRight == true)
         {
             rb.transform.Rotate(rotationSpeed * Time.deltaTime * transform.up);
         }
 
-        if(isRotatingLeft == true)
+        if (isRotatingLeft == true)
         {
             rb.transform.Rotate(-rotationSpeed * Time.deltaTime * transform.up);
         }
 
-        if (zombieIsWalking == true)
+        if (isWalking == true)
         {
             rb.AddForce(transform.forward * walkSpeed);
         }
     }
-
     private IEnumerator Strolling()
     {
         float walkWait = Random.Range(2.0f, 4.0f);
@@ -71,11 +79,11 @@ public class ZombieEnemy : MonoBehaviour
 
         yield return new WaitForSeconds(walkWait);
 
-        zombieIsWalking = true;
+        isWalking = true;
 
         yield return new WaitForSeconds(walkTime);
 
-        zombieIsWalking = false;
+        isWalking = false;
 
         yield return new WaitForSeconds(rotateWait);
 
@@ -101,7 +109,7 @@ public class ZombieEnemy : MonoBehaviour
     private void ZombieAnimation()
     {
         //Walking
-        if(zombieIsWalking == true)
+        if(isWalking == true)
         {
             animator.SetBool(walkAnimation, true);
             animator.SetFloat(moveMultiplier, walkSpeed * animationMultiplier);
@@ -112,10 +120,34 @@ public class ZombieEnemy : MonoBehaviour
         }
 
         //Chasing
-        if(zombieIsChasing == true)
+        if (isChasing == true)
         {
             animator.SetBool(runAnimation, true);
             animator.SetFloat(moveMultiplier, runSpeed * animationMultiplier);
+        }
+        else
+        {
+            animator.SetBool(runAnimation, false);
+        }
+
+        //Attacking
+        if(isAttacking == true)
+        {
+            animator.SetBool(attackAnimation, true);
+        }
+        else
+        {
+            animator.SetBool(attackAnimation, false);
+        }
+
+        //Death
+        if(isDead == true)
+        {
+            animator.SetBool(deathAnimation, true);
+        }
+        else
+        {
+            animator.SetBool(deathAnimation, false);
         }
     }
 }
