@@ -7,47 +7,48 @@ using UnityEngine.AI;
 public class move : MonoBehaviour
 {
     private Transform player;
-
+    /*public Object ImpactSCR;*/
     private NavMeshAgent agent;
-   // public BoxCollider head;
+    /*public GameObject rhino;*/
     public float enemyDistance = 0.7f;
-    public Transform player1;
+    
     private void Start()
     {
-        
-        player = GameObject.FindWithTag("PlayerController").transform;
+        StartCoroutine(EnemyCheckPlayer());
         agent = GetComponent<NavMeshAgent>();
-        if (player==null)
-        {
-            StartCoroutine(EnemyCheckPlayer());
-            Transform player2 = GameObject.FindWithTag("PlayerController").transform;
-            player1 = player2;
-        }
-       // agent = GetComponent<NavMeshAgent>();
+        
     }
 
-    //Call every frame
+    
     void Update()
     {
-        //Look at the player
-        transform.LookAt(player);
-        //gameObject.GetComponent<Animator>().Play("Run");
-        agent.SetDestination(player.transform.position);
-
-        if (Vector3.Distance(transform.position, player.position) < enemyDistance)
+        if (GameObject.FindGameObjectWithTag("PlayerController") == true)
         {
-            gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
-            gameObject.GetComponent<Animator>().Play("Atac");
+            transform.LookAt(player);
+            agent.SetDestination(player.transform.position);
+
+            if (Vector3.Distance(transform.position, player.position) < enemyDistance)
+            {
+                gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
+                gameObject.GetComponent<Animator>().Play("Atac");
+                gameObject.GetComponent<impact>().enabled = true;
+
+            }
+            else
+            { 
+                gameObject.GetComponent<Animator>().Play("Run");
+                gameObject.GetComponent<impact>().enabled=false;
+            }
 
         }
         else
-            gameObject.GetComponent<Animator>().Play("Run");
-
+            StartCoroutine(EnemyCheckPlayer());
     }
     private IEnumerator EnemyCheckPlayer()
     {
        
             yield return new WaitForSeconds(2.0f);
+            player = GameObject.FindGameObjectWithTag("PlayerController").transform;
             
         
     }

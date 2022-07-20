@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 2739546825773715404}
   - component: {fileID: 2739546825773715405}
   - component: {fileID: 2340485259599691288}
+  - component: {fileID: 840261226912089966}
   m_Layer: 0
   m_Name: Rhino_PBR
   m_TagString: Untagged
@@ -794,7 +795,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.27
-  m_Speed: 26.8
+  m_Speed: 6.9
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 31.4
@@ -818,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54853f138c62a7e4dbbbf684a3841c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockStr: 9.09
+  knockStr: 87
 --- !u!114 &2340485259599691288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +832,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc40da0c8bfa324bab91014b18a2aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDistance: 0.7
+  ImpactSCR: {fileID: 2739546825773715405}
+  rhino: {fileID: 2739546825193563620}
+  enemyDistance: 8.06
+--- !u!65 &840261226912089966
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739546825193563620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.86307555, y: 1.9670231, z: 1.9976681}
+  m_Center: {x: 0.06846254, y: 0.48351014, z: 0.35651782}
 --- !u!1 &2739546825193563844
 GameObject:
   m_ObjectHideFlags: 0
