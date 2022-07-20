@@ -298,6 +298,34 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
         };
     }
 
+    public void TakeDamageFromMonster(float damage)
+    {
+        PV.RPC(nameof(RPC_TakeDamageFromMonster), PV.Owner, damage);
+    }
+    [PunRPC]
+    private void RPC_TakeDamageFromMonster(float damage)
+    {
+        Debug.Log($"Took {damage} damage from zombie...");
+        currentHealth -= damage;
+
+        healthbarImage.fillAmount = currentHealth / maxHealth;
+
+        if (currentHealth <= 0)
+        {
+            if (isDead == true)
+                return;
+
+            gameOverScreen.gameObject.SetActive(true);
+
+            this.tag = "DeadPlayer";
+
+            isDead = true;
+
+            Invoke(nameof(Die), 2.0f);
+        }
+
+
+    }
     public void TakeDamage(float damage)
     {
         PV.RPC(nameof(RPC_TakeDamage), PV.Owner, damage);

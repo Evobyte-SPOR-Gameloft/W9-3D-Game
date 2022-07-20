@@ -1079,6 +1079,7 @@ GameObject:
   - component: {fileID: -9082757512715565052}
   - component: {fileID: 7031972371481416304}
   - component: {fileID: -321373942324171375}
+  - component: {fileID: -5624629201332178929}
   m_Layer: 0
   m_Name: EnemyZombie
   m_TagString: EnemyZombie
@@ -1148,8 +1149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f24b3bfc77269428207ad980c1a569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
-  runSpeed: -3
+  walkSpeed: 1
+  runSpeed: 2
   rotationSpeed: 200
   currentHealth: 100
   maxHealth: 100
@@ -1159,6 +1160,7 @@ MonoBehaviour:
   animator: {fileID: 9112894323256533061}
   rb: {fileID: 1800116639723068335}
   target: {fileID: 0}
+  triggerCollider: {fileID: -5624629201332178929}
 --- !u!54 &1800116639723068335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1205,7 +1207,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: -9082757512715565052}
@@ -1279,6 +1281,20 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!136 &-5624629201332178929
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785154228004552492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.8001107
+  m_Direction: 1
+  m_Center: {x: 0.011863236, y: 0.91912246, z: 0}
 --- !u!1 &3115605613661626192
 GameObject:
   m_ObjectHideFlags: 0

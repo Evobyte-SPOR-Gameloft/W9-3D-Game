@@ -91,6 +91,11 @@ public class SingleShotGun : Gun
                 }
                 else if (Physics.Raycast(ray, out hit))
                 {
+                    if(hit.collider.CompareTag("EnemyZombie") == true)
+                    {
+                        hit.collider.GetComponent<PhotonView>().RequestOwnership();
+                    }
+
                     if(distance < 15)
                     {
                         
@@ -103,7 +108,7 @@ public class SingleShotGun : Gun
 
                     //hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(Random.Range(((GunInfo)itemInfo).minDamage, ((GunInfo)itemInfo).maxDamage));
                     PV.RPC(nameof(RPC_Shoot), RpcTarget.All, hit.point, hit.normal);
-                    Debug.Log("Distance to target: " + distance);
+                    //Debug.Log("Distance to target: " + distance);
 
                 }
 
@@ -112,7 +117,7 @@ public class SingleShotGun : Gun
 
                 if (((GunInfo)itemInfo).magCapacity == 0)
                 {
-                    Debug.Log("Out of ammo");
+                    //Debug.Log("Out of ammo");
                     StartCoroutine(ReloadGun());
                 }
                 ((GunInfo)itemInfo).canShoot = false;
@@ -153,11 +158,11 @@ public class SingleShotGun : Gun
                 }
 
                 ((GunInfo)itemInfo).magCapacity -= 1;
-                Debug.Log(((GunInfo)itemInfo).magCapacity);
+                //Debug.Log(((GunInfo)itemInfo).magCapacity);
 
                 if (((GunInfo)itemInfo).magCapacity == 0)
                 {
-                    Debug.Log("Out of ammo");
+                    //Debug.Log("Out of ammo");
                     StartCoroutine(ReloadGun());
                 }
 
@@ -174,10 +179,10 @@ public class SingleShotGun : Gun
     IEnumerator ReloadGun()
     {
         isReloading = true;
-        Debug.Log("Reloading gun");
+        //Debug.Log("Reloading gun");
         yield return new WaitForSeconds(reloadTime);
         ((GunInfo)itemInfo).magCapacity = ((GunInfo)itemInfo).bulletsToReload;
-        Debug.Log("Reloaded new magazine");
+        //Debug.Log("Reloaded new magazine");
         isReloading = false;
     }
 

@@ -44,6 +44,7 @@ MonoBehaviour:
   - RPC_Movement
   - RPC_GetKill
   - RPC_GetMonsterKill
+  - RPC_TakeDamageFromMonster
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

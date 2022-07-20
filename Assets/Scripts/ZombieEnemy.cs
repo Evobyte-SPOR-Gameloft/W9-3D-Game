@@ -1,7 +1,10 @@
 using Photon.Pun;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
+
 
 public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 {
@@ -33,17 +36,19 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     private bool isRotatingLeft = false;
     private bool isRotatingRight = false;
 
-    private bool isStrolling = false;
+    //private bool isStrolling = false;
 
     private bool isAttacking = false;
 
     private bool isDead = false;
 
-    public GameObject target;
+    private bool canChase = true;
+
+    [HideInInspector] public GameObject target;
 
     private Vector3 moveDirection;
 
-    private CapsuleCollider collider;
+    [SerializeField] private CapsuleCollider triggerCollider;
 
     private void Start()
     {
@@ -53,7 +58,6 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
-        collider = GetComponent<CapsuleCollider>();
     }
     void Update()
     {
@@ -82,16 +86,40 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
         ChasePlayer();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayerController"))
+        {
+            canChase = false;
+
+            isAttacking = true;
+
+            other.gameObject.GetComponent<IDamageable>()?.TakeDamageFromMonster(Random.Range(minAttackDamage, maxAttackDamage));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isAttacking = false;
+        canChase = true;
+    }
+
     private void ChasePlayer()
     {
         if (target == null)
             return;
 
-        transform.LookAt((target.transform));
+        if (!canChase)
+            return;
+
+        Vector3 targetTransform = target.transform.position;
+
+        targetTransform.y = transform.position.y;
+        transform.LookAt(targetTransform);
 
         isChasing = true;
 
-        transform.Translate(runSpeed * Time.deltaTime * Vector3.forward);
+        rb.MovePosition(transform.position + Vector3.forward * Time.deltaTime * runSpeed);
     }
 
     private void StrollingRotationLogic()
@@ -111,7 +139,8 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
             rb.AddForce(transform.forward * walkSpeed);
         }
     }
-    private IEnumerator Strolling()
+
+    /*private IEnumerator Strolling()
     {
         float walkWait = Random.Range(1.0f, 2.0f);
         float walkTime = Random.Range(1.5f, 3.0f);
@@ -151,6 +180,7 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
         isStrolling = false;
     }
+    */
 
     private void ZombieAnimation()
     {
@@ -197,6 +227,10 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
         }
     }
 
+    public void TakeDamageFromMonster(float damage)
+    {
+        Debug.Log($"Nothing here...");
+    }
     public void TakeDamage(float damage)
     {
         PV.RPC(nameof(RPC_TakeDamage), PV.Owner, damage);
@@ -220,9 +254,15 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
             PlayerManager.Find(info.Sender).GetMonsterKill();
 
-            Destroy(gameObject, 1.0f);
+            StartCoroutine(DelayedDestroy());
         }
 
+    }
+
+    private IEnumerator DelayedDestroy()
+    {
+        yield return new WaitForSeconds(1.0f);
+        PhotonNetwork.Destroy(gameObject);
     }
 
 

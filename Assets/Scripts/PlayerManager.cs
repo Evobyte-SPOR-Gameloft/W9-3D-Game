@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    { 
         if (PV.IsMine)
         {
             CreateController();
