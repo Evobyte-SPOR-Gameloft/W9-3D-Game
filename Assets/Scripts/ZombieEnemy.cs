@@ -239,7 +239,7 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     }
     public void TakeDamage(float damage)
     {
-        PV.RPC(nameof(RPC_TakeDamage), RpcTarget.Others, damage);
+        PV.RPC(nameof(RPC_TakeDamage), RpcTarget.All, damage);
     }
 
     [PunRPC]
@@ -260,7 +260,9 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
             PlayerManager.Find(info.Sender).GetMonsterKill();
 
-            StartCoroutine(DelayedDestroy());
+            Destroy(gameObject, 0.7f);
+
+            //StartCoroutine(DelayedDestroy());
         }
 
     }
