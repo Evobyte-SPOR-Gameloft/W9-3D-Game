@@ -239,16 +239,13 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     }
     public void TakeDamage(float damage)
     {
-        PV.RPC(nameof(RPC_TakeDamage), RpcTarget.All, damage);
+        PV.RPC(nameof(RPC_TakeDamage), PV.Owner);
+        PV.RPC(nameof(RPC_UpdateHealthBar), RpcTarget.All, damage);
     }
 
     [PunRPC]
-    private void RPC_TakeDamage(float damage, PhotonMessageInfo info)
+    private void RPC_TakeDamage(PhotonMessageInfo info)
     {
-        currentHealth -= damage;
-
-        healthbarImage.fillAmount = currentHealth / maxHealth;
-
         if (currentHealth <= 0)
         {
             if (isDead == true)
@@ -260,11 +257,18 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
             PlayerManager.Find(info.Sender).GetMonsterKill();
 
-            Destroy(gameObject, 0.7f);
+            //Destroy(gameObject, 0.7f);
 
-            //StartCoroutine(DelayedDestroy());
+            StartCoroutine(DelayedDestroy());
         }
+    }
 
+    [PunRPC]
+    private void RPC_UpdateHealthBar(float damage)
+    {
+        currentHealth -= damage;
+
+        healthbarImage.fillAmount = currentHealth / maxHealth;
     }
 
     private IEnumerator DelayedDestroy()
