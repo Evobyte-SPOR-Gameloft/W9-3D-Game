@@ -13,9 +13,9 @@ public class PlayerManager : MonoBehaviour
 
     GameObject controller;
 
-    int monsterKills;
-    int playerKills;
-    int deaths;
+    [HideInInspector] public int monsterKills = 0;
+    int playerKills = 0;
+    int deaths = 0;
 
     private void Awake()
     {

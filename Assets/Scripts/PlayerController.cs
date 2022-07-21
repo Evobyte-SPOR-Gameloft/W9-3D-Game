@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
     [SerializeField] private Canvas gameOverScreen;
 
+    [SerializeField] private TMP_Text killCounterText;
+
     private readonly string moveAnimation = "isMoving";
     private readonly string deathAnimation = "isDead";
     private readonly string shootAutoAnimation = "isShootingAuto";
@@ -296,6 +298,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
             2 => "   \u221E",
             _ => "99/99",
         };
+
+        killCounterText.text = playerManager.monsterKills.ToString();
     }
 
     public void TakeDamageFromMonster(float damage)

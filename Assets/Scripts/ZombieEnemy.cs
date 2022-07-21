@@ -2,6 +2,7 @@ using Photon.Pun;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
@@ -15,6 +16,8 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     [SerializeField] private float maxHealth;
     [SerializeField] private float minAttackDamage;
     [SerializeField] private float maxAttackDamage;
+
+    [SerializeField] Image healthbarImage;
 
     [SerializeField] private float animationMultiplier = 0.2f;
 
@@ -44,16 +47,17 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
     private bool canChase = true;
 
-    [HideInInspector] public GameObject target;
+    private GameObject[] targets;
+
+    public GameObject target;
+
+
+
+
 
     private Vector3 moveDirection;
 
     [SerializeField] private CapsuleCollider triggerCollider;
-
-    private void Start()
-    {
-        target = GameObject.FindWithTag("PlayerController");
-    }
 
     private void Awake()
     {
@@ -61,6 +65,9 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     }
     void Update()
     {
+        if (!PV.IsMine)
+            return;
+
         ZombieAnimation();
 
         if (isDead)
@@ -73,17 +80,33 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
         StrollingRotationLogic();*/
 
+        ZombieAnimation();
+
         if(target == null)
         {
-            target = GameObject.FindWithTag("PlayerController");
+            targets = GameObject.FindGameObjectsWithTag("PlayerController");
+
+            target = targets[Random.Range(0, targets.Length)];
         }
 
-        ZombieAnimation();
-    }
-
-    private void FixedUpdate()
-    {
         ChasePlayer();
+    }
+    private void ChasePlayer()
+    {
+        if (target == null)
+            return;
+
+        if (!canChase)
+            return;
+
+        Vector3 targetTransform = target.transform.position;
+
+        targetTransform.y = transform.position.y;
+        transform.LookAt(targetTransform);                                  
+
+        isChasing = true;
+
+        rb.MovePosition(transform.position + runSpeed * Time.deltaTime * Vector3.forward);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -104,25 +127,8 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
         canChase = true;
     }
 
-    private void ChasePlayer()
-    {
-        if (target == null)
-            return;
 
-        if (!canChase)
-            return;
-
-        Vector3 targetTransform = target.transform.position;
-
-        targetTransform.y = transform.position.y;
-        transform.LookAt(targetTransform);
-
-        isChasing = true;
-
-        rb.MovePosition(transform.position + Vector3.forward * Time.deltaTime * runSpeed);
-    }
-
-    private void StrollingRotationLogic()
+    /*private void StrollingRotationLogic()
     {
         if (isRotatingRight == true)
         {
@@ -138,7 +144,7 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
         {
             rb.AddForce(transform.forward * walkSpeed);
         }
-    }
+    }/*
 
     /*private IEnumerator Strolling()
     {
@@ -233,16 +239,13 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     }
     public void TakeDamage(float damage)
     {
-        PV.RPC(nameof(RPC_TakeDamage), PV.Owner, damage);
+        PV.RPC(nameof(RPC_TakeDamage), PV.Owner);
+        PV.RPC(nameof(RPC_UpdateHealthBar), RpcTarget.All, damage);
     }
 
     [PunRPC]
-    private void RPC_TakeDamage(float damage, PhotonMessageInfo info)
+    private void RPC_TakeDamage(PhotonMessageInfo info)
     {
-        currentHealth -= damage;
-
-        //healthbarImage.fillAmount = currentHealth / maxHealth;
-
         if (currentHealth <= 0)
         {
             if (isDead == true)
@@ -254,9 +257,18 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
 
             PlayerManager.Find(info.Sender).GetMonsterKill();
 
+            //Destroy(gameObject, 0.7f);
+
             StartCoroutine(DelayedDestroy());
         }
+    }
 
+    [PunRPC]
+    private void RPC_UpdateHealthBar(float damage)
+    {
+        currentHealth -= damage;
+
+        healthbarImage.fillAmount = currentHealth / maxHealth;
     }
 
     private IEnumerator DelayedDestroy()
