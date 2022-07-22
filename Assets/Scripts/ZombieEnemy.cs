@@ -182,7 +182,7 @@ public class ZombieEnemy : MonoBehaviourPunCallbacks, IDamageable
     }
     */
 
-    private void ZombieAnimation()
+    public virtual void ZombieAnimation()
     {
         //Walking
         if(isWalking == true)

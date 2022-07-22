@@ -7,9 +7,9 @@ using UnityEngine.AI;
 public class move : MonoBehaviour
 {
     private Transform player;
-    /*public Object ImpactSCR;*/
+    
     private NavMeshAgent agent;
-    /*public GameObject rhino;*/
+    
     public float enemyDistance = 0.7f;
     
     private void Start()

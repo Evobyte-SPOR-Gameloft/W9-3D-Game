@@ -722,9 +722,12 @@ GameObject:
   - component: {fileID: 2739546825773715405}
   - component: {fileID: 2340485259599691288}
   - component: {fileID: 840261226912089966}
+  - component: {fileID: -7541368811595339184}
+  - component: {fileID: 3086686362710952036}
+  - component: {fileID: 343999668343776688}
   m_Layer: 0
   m_Name: Rhino_PBR
-  m_TagString: Untagged
+  m_TagString: EnemyZombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -814,7 +817,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739546825193563620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54853f138c62a7e4dbbbf684a3841c59, type: 3}
   m_Name: 
@@ -827,13 +830,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739546825193563620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cc40da0c8bfa324bab91014b18a2aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImpactSCR: {fileID: 2739546825773715405}
-  rhino: {fileID: 2739546825193563620}
   enemyDistance: 8.06
 --- !u!65 &840261226912089966
 BoxCollider:
@@ -848,6 +849,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.86307555, y: 1.9670231, z: 1.9976681}
   m_Center: {x: 0.06846254, y: 0.48351014, z: 0.35651782}
+--- !u!114 &-7541368811595339184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739546825193563620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5d111da28775542859f96d1855c558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100
+  maxHealth: 0
+  minAttackDamage: 12
+  maxAttackDamage: 13
+  target: {fileID: 0}
+  knockStr: 2.36
+  enemyDistance: 0.7
+--- !u!114 &3086686362710952036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739546825193563620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 343999668343776688}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &343999668343776688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739546825193563620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!1 &2739546825193563844
 GameObject:
   m_ObjectHideFlags: 0
