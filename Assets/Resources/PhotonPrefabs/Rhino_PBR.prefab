@@ -719,8 +719,6 @@ GameObject:
   - component: {fileID: 2739546825200847282}
   - component: {fileID: 2739546825773715441}
   - component: {fileID: 2739546825773715404}
-  - component: {fileID: 2739546825773715405}
-  - component: {fileID: 2340485259599691288}
   - component: {fileID: 840261226912089966}
   - component: {fileID: -7541368811595339184}
   - component: {fileID: 3086686362710952036}
@@ -810,32 +808,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2739546825773715405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2739546825193563620}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54853f138c62a7e4dbbbf684a3841c59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockStr: 87
---- !u!114 &2340485259599691288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2739546825193563620}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc40da0c8bfa324bab91014b18a2aac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyDistance: 8.06
 --- !u!65 &840261226912089966
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -861,12 +833,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5d111da28775542859f96d1855c558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
+  currentHealth: 120
   maxHealth: 0
   minAttackDamage: 12
   maxAttackDamage: 13
   target: {fileID: 0}
-  knockStr: 2.36
+  knockStr: 13.48
   enemyDistance: 0.7
 --- !u!114 &3086686362710952036
 MonoBehaviour:
