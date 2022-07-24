@@ -1321,6 +1321,7 @@ GameObject:
   - component: {fileID: 6474754360295378824}
   - component: {fileID: 54432718872666528}
   - component: {fileID: 6171703745198994430}
+  - component: {fileID: -8772339595474681515}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: PlayerController
@@ -1486,6 +1487,18 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-8772339595474681515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298419746078360537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f63d1d31ca8e94fb9446764087f8e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4298419746557651491
 GameObject:
   m_ObjectHideFlags: 0
