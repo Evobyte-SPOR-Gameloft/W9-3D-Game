@@ -838,7 +838,7 @@ MonoBehaviour:
   minAttackDamage: 12
   maxAttackDamage: 13
   target: {fileID: 0}
-  knockStr: 13.48
+  knockStr: 32.5
   enemyDistance: 0.7
 --- !u!114 &3086686362710952036
 MonoBehaviour:

@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public MyEnum EnemySelection = new MyEnum();
     [SerializeField] Transform parent;
     PhotonView PV;
-    int counter=5;
+    [SerializeField] int counter=5;
     bool cond;
     private IEnumerator coroutineSpawn, coroutineStart;
     bool CR;
@@ -29,13 +29,14 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.Find("EnemySpawner").transform.childCount >= counter)
+        if (GameObject.Find(EnemySelection.ToString() + " Spawner").transform.childCount >= counter)
         { StopCoroutine(coroutineSpawn);
             Debug.Log("S-a oprit corutina de Spawn");
             cond = true;
         }
-        Debug.Log("Numarul de inamici este :" + GameObject.Find("EnemySpawner").transform.childCount);
-        if (GameObject.Find("EnemySpawner").transform.childCount == 0)
+        Debug.Log("Numarul de inamici este :" + GameObject.Find(EnemySelection.ToString()+" Spawner").transform.childCount);
+
+        if (GameObject.Find(EnemySelection.ToString() + " Spawner").transform.childCount == 0)
         {
             StartCoroutine(coroutineStart);
             Debug.Log("A inceput corutina de Start");
@@ -73,7 +74,6 @@ public class EnemySpawner : MonoBehaviour
             CreateEnemy();
             
         }
-        
 
     }
     private IEnumerator StartTheCoroutine()
