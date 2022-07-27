@@ -52,8 +52,10 @@ public class RhinoEnemy : MonoBehaviourPunCallbacks, IDamageable
     }
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("PlayerController") == true)
+        target = GameObject.FindGameObjectWithTag("PlayerController");
+        if (target == true)
         {
+            Debug.Log("player found");
             transform.LookAt(player);
             agent.SetDestination(player.transform.position);
 
@@ -61,8 +63,7 @@ public class RhinoEnemy : MonoBehaviourPunCallbacks, IDamageable
             {
                 gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
                 gameObject.GetComponent<Animator>().Play("Atac");
-                
-                // gameObject.GetComponent<impact>().enabled = true;
+
 
             }
             else
@@ -72,7 +73,8 @@ public class RhinoEnemy : MonoBehaviourPunCallbacks, IDamageable
             }
 
         }
-        else
+        else if (target == null)
+            Debug.Log("player dead");
             StartCoroutine(EnemyCheckPlayer());
     }
 
@@ -131,6 +133,7 @@ public class RhinoEnemy : MonoBehaviourPunCallbacks, IDamageable
 
         yield return new WaitForSeconds(2.0f);
         player = GameObject.FindGameObjectWithTag("PlayerController").transform;
+        target = GameObject.FindGameObjectWithTag("PlayerController");
 
 
     }
