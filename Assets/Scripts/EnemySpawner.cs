@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public MyEnum EnemySelection = new MyEnum();
     [SerializeField] Transform parent;
     PhotonView PV;
-    [SerializeField] int counter=5;
+    [SerializeField] int counter;
     bool cond;
     private IEnumerator coroutineSpawn, coroutineStart;
     bool CR;
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(coroutineStart);
             Debug.Log("A inceput corutina de Start");
             CR = true;
-            counter += 5;
+            counter += 2;
         }
 
         if (CR == true)
@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
         cond = true;
         while (cond==true)
         {
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(5.0f);
             CreateEnemy();
             
         }

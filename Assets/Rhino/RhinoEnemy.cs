@@ -131,7 +131,7 @@ public class RhinoEnemy : MonoBehaviourPunCallbacks, IDamageable
 
         yield return new WaitForSeconds(2.0f);
         player = GameObject.FindGameObjectWithTag("PlayerController").transform;
-
+        target = GameObject.FindGameObjectWithTag("PlayerController");
 
     }
 
