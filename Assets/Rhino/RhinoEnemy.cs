@@ -44,11 +44,17 @@ public class RhinoEnemy : MonoBehaviourPunCallbacks, IDamageable
     {
         StartCoroutine(EnemyCheckPlayer());
         agent = GetComponent<NavMeshAgent>();
+        agent.updatePosition = false;
+        
     }
 
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
+    }
+    private void FixedUpdate()
+    {
+        agent.updatePosition = true;
     }
     void Update()
     {

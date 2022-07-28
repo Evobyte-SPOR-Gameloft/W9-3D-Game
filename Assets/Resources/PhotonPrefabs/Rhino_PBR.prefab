@@ -819,8 +819,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.86307555, y: 1.9670231, z: 1.9976681}
-  m_Center: {x: 0.06846254, y: 0.48351014, z: 0.35651782}
+  m_Size: {x: 0.86307555, y: 1.4914918, z: 1.9976681}
+  m_Center: {x: 0.06846254, y: 0.7212774, z: 0.35651782}
 --- !u!114 &-7541368811595339184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,7 +856,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 1
+  OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 343999668343776688}
