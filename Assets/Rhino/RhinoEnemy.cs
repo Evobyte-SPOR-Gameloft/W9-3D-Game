@@ -52,6 +52,8 @@ public class RhinoEnemy : MonoBehaviourPunCallbacks, IDamageable
     }
     void Update()
     {
+        if (!PV.IsMine)
+            return;
         if (GameObject.FindGameObjectWithTag("PlayerController") == true)
         {
             transform.LookAt(player);
